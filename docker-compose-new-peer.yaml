@@ -1,0 +1,58 @@
+version: '2'
+
+networks:
+  basic:
+    external:
+      name: tutorials_basic
+
+services:
+  peer1-org0:
+    container_name: peer1-org0
+    image: hyperledger/fabric-ca-peer:1.2.0
+    environment:
+      - ORG=org0
+      - NO_PEER=1
+      - FABRIC_CA_CLIENT_HOME=/data/peers/peer1-org0
+      - FABRIC_CA_CLIENT_TLS_CERTFILES=/data/org0-ca-cert.pem
+      - ENROLLMENT_URL=http://peer1-org0:peer1-org0pw@ca-org0:7054
+      - PEER_NAME=peer1-org0
+      - PEER_HOST=peer1-org0
+      - PEER_HOME=/data/peers/peer1-org0
+      - PEER_NAME_PASS=peer1-org0:peer1-org0pw
+      - CORE_PEER_ID=peer1-org0
+      - CORE_PEER_ADDRESS=peer1-org0:7051
+      - CORE_PEER_LOCALMSPID=org0MSP
+      - CORE_PEER_MSPCONFIGPATH=/data/peers/peer1-org0/msp
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=basic_tutorials
+      - CORE_LOGGING_LEVEL=DEBUG
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1-org0:7051
+      - ORG_ADMIN_CERT=/data/orgs/org0/msp/admincerts/cert.pem
+    working_dir: /data/peers
+    command: /bin/bash -c '/scripts/bootstrap/register-peer.sh 2>&1 | tee /data/logs/peer1-org0.log'
+    ports:
+      - 7051:7051
+      - 7053:7053
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./data:/data
+        - ./scripts:/scripts
+    networks:
+      - basic
+
+  cli:
+    container_name: cli
+    image: hyperledger/fabric-ca-tools:1.2.0
+    tty: true
+    environment:
+      - GOPATH=/opt/gopath
+    command: /bin/bash
+    volumes:
+      - ./scripts:/scripts
+      - ./data:/data
+      - ./chaincode:/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode
+    networks:
+      - basic

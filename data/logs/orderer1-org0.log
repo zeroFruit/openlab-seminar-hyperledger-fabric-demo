@@ -1,0 +1,1431 @@
+/scripts/bootstrap/start-orderer.sh: line 6: awaitSetup: command not found
+2018/09/19 06:59:42 [DEBUG] Home directory: /data/orderers/orderer1-org0
+2018/09/19 06:59:42 [INFO] Created a default configuration file at /data/orderers/orderer1-org0/fabric-ca-client-config.yaml
+2018/09/19 06:59:42 [DEBUG] Client configuration settings: &{URL:http://orderer1-org0:orderer1-org0pw@ca-org0:7054 MSPDir:/data/orderers/orderer1-org0/msp TLS:{Enabled:false CertFiles:[] Client:{KeyFile: CertFile:}} Enrollment:{ Name: Secret:**** CAName: AttrReqs:[] Profile: Label: CSR:<nil> Type:x509  } CSR:{CN:orderer1-org0 Names:[{C:US ST:North Carolina L: O:Hyperledger OU:Fabric SerialNumber:}] Hosts:[b584a61bf035] KeyRequest:<nil> CA:<nil> SerialNumber:} ID:{Name: Type:client Secret: MaxEnrollments:0 Affiliation: Attributes:[] CAName:} Revoke:{Name: Serial: AKI: Reason: CAName: GenCRL:false} CAInfo:{CAName:} CAName: CSP:0xc420060780}
+2018/09/19 06:59:42 [DEBUG] Entered runEnroll
+2018/09/19 06:59:42 [DEBUG] Enrolling { Name:orderer1-org0 Secret:**** CAName: AttrReqs:[] Profile: Label: CSR:&{orderer1-org0 [{US North Carolina  Hyperledger Fabric }] [b584a61bf035] <nil> <nil> } Type:x509  }
+2018/09/19 06:59:42 [DEBUG] Initializing client with config: &{URL:http://ca-org0:7054 MSPDir:/data/orderers/orderer1-org0/msp TLS:{Enabled:false CertFiles:[] Client:{KeyFile: CertFile:}} Enrollment:{ Name:orderer1-org0 Secret:**** CAName: AttrReqs:[] Profile: Label: CSR:&{orderer1-org0 [{US North Carolina  Hyperledger Fabric }] [b584a61bf035] <nil> <nil> } Type:x509  } CSR:{CN:orderer1-org0 Names:[{C:US ST:North Carolina L: O:Hyperledger OU:Fabric SerialNumber:}] Hosts:[b584a61bf035] KeyRequest:<nil> CA:<nil> SerialNumber:} ID:{Name: Type:client Secret: MaxEnrollments:0 Affiliation: Attributes:[] CAName:} Revoke:{Name: Serial: AKI: Reason: CAName: GenCRL:false} CAInfo:{CAName:} CAName: CSP:0xc420060780}
+2018/09/19 06:59:42 [DEBUG] Initializing BCCSP: &{ProviderName:SW SwOpts:0xc4200607e0 PluginOpts:<nil> Pkcs11Opts:<nil>}
+2018/09/19 06:59:42 [DEBUG] Initializing BCCSP with software options &{SecLevel:256 HashFamily:SHA2 Ephemeral:false FileKeystore:0xc4201a62c0 DummyKeystore:<nil>}
+2018/09/19 06:59:42 [DEBUG] GenCSR &{CN:orderer1-org0 Names:[{C:US ST:North Carolina L: O:Hyperledger OU:Fabric SerialNumber:}] Hosts:[b584a61bf035] KeyRequest:<nil> CA:<nil> SerialNumber:}
+2018/09/19 06:59:42 [INFO] generating key: &{A:ecdsa S:256}
+2018/09/19 06:59:42 [DEBUG] generate key from request: algo=ecdsa, size=256
+2018/09/19 06:59:42 [INFO] encoded CSR
+2018/09/19 06:59:42 [DEBUG] Sending request
+POST http://ca-org0:7054/enroll
+{"hosts":["b584a61bf035"],"certificate_request":"-----BEGIN CERTIFICATE REQUEST-----\nMIIBSjCB8QIBADBlMQswCQYDVQQGEwJVUzEXMBUGA1UECBMOTm9ydGggQ2Fyb2xp\nbmExFDASBgNVBAoTC0h5cGVybGVkZ2VyMQ8wDQYDVQQLEwZGYWJyaWMxFjAUBgNV\nBAMTDW9yZGVyZXIxLW9yZzAwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATVazoL\n9oQnwmMAlZf+WhCPE6EMr47P/Vbij489hQ0HVZMQq/BcjlwrsN9inom3VxWKolYw\nSUp00vMiG295xf92oCowKAYJKoZIhvcNAQkOMRswGTAXBgNVHREEEDAOggxiNTg0\nYTYxYmYwMzUwCgYIKoZIzj0EAwIDSAAwRQIhAOZxUO8ZSwnrDzANN/8PJnzT2G6o\nnJE+5LiqxX9uhD5OAiA+d/zHbLOxjjZvq3WwSzBzlDmoTNwIX8SdpoHcaLt66w==\n-----END CERTIFICATE REQUEST-----\n","profile":"","crl_override":"","label":"","NotBefore":"0001-01-01T00:00:00Z","NotAfter":"0001-01-01T00:00:00Z","CAName":""}
+2018/09/19 06:59:42 [DEBUG] Received response
+statusCode=201 (201 Created)
+2018/09/19 06:59:42 [DEBUG] Response body result: map[Cert:LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNwVENDQWt1Z0F3SUJBZ0lVRVB1VEhUZEQrMWlDWWltQmJVcXZSSmZDb3NFd0NnWUlLb1pJemowRUF3SXcKWHpFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJBd0RnWURWUVFERXdkallTMXZjbWN3Ck1CNFhEVEU0TURreE9UQTJOVFV3TUZvWERURTVNRGt4T1RBM01EQXdNRm93WmpFTE1Ba0dBMVVFQmhNQ1ZWTXgKRnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbGNteGxaR2RsY2pFUQpNQTRHQTFVRUN4TUhiM0prWlhKbGNqRVdNQlFHQTFVRUF4TU5iM0prWlhKbGNqRXRiM0puTURCWk1CTUdCeXFHClNNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJOVnJPZ3YyaENmQ1l3Q1ZsLzVhRUk4VG9ReXZqcy85VnVLUGp6MkYKRFFkVmt4Q3I4RnlPWEN1dzMyS2VpYmRYRllxaVZqQkpTblRTOHlJYmIzbkYvM2FqZ2Qwd2dkb3dEZ1lEVlIwUApBUUgvQkFRREFnZUFNQXdHQTFVZEV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZFNlFsdWF0QzRlVnZCbnZFdVhxClJNeGptSFR0TUI4R0ExVWRJd1FZTUJhQUZFRmZxcnQ0REV3bVdBK3d6aWdqK1I0a1RhWlZNQmNHQTFVZEVRUVEKTUE2Q0RHSTFPRFJoTmpGaVpqQXpOVEJoQmdncUF3UUZCZ2NJQVFSVmV5SmhkSFJ5Y3lJNmV5Sm9aaTVCWm1acApiR2xoZEdsdmJpSTZJaUlzSW1obUxrVnVjbTlzYkcxbGJuUkpSQ0k2SW05eVpHVnlaWEl4TFc5eVp6QWlMQ0pvClppNVVlWEJsSWpvaWIzSmtaWEpsY2lKOWZUQUtCZ2dxaGtqT1BRUURBZ05JQURCRkFpRUE2a0x4NmxvVUt0SnoKYmg3UDZaNUxLc1RUckp6OC8zUno4YWs3bHI4RUZNTUNJQ2xzZHYwS1dQSTRPWUdiVUVzdlFGUzJ1U3FiTkNTRQo4SlY3bmYzaWVjSG4KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo= ServerInfo:map[CAName:ca-org0 CAChain:LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNCVENDQWF1Z0F3SUJBZ0lVQTBlQlVoTFo2QmJsR09qcTN5YnJmSVlMd2dzd0NnWUlLb1pJemowRUF3SXcKWHpFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJBd0RnWURWUVFERXdkallTMXZjbWN3Ck1CNFhEVEU0TURreE9UQTJOVFV3TUZvWERUTXpNRGt4TlRBMk5UVXdNRm93WHpFTE1Ba0dBMVVFQmhNQ1ZWTXgKRnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbGNteGxaR2RsY2pFUApNQTBHQTFVRUN4TUdSbUZpY21sak1SQXdEZ1lEVlFRREV3ZGpZUzF2Y21jd01Ga3dFd1lIS29aSXpqMENBUVlJCktvWkl6ajBEQVFjRFFnQUV5RmhoZUJiRjlxaWlNWC9jT1hIY0d4SmhNVDdoVUVrais1TCtuLzZSMExjSjRZSy8KejhKZHJpUHlLTUlTMFdaRVBDUzNmVjU3TEp1SUZOTEt4ckdUeUtORk1FTXdEZ1lEVlIwUEFRSC9CQVFEQWdFRwpNQklHQTFVZEV3RUIvd1FJTUFZQkFmOENBUUV3SFFZRFZSME9CQllFRkVGZnFydDRERXdtV0Erd3ppZ2orUjRrClRhWlZNQW9HQ0NxR1NNNDlCQU1DQTBnQU1FVUNJUUN6RnlhTzhkUmJXZ0JQT2ZscldZaDY4OEhFbDZ1T0VXVW8Kengvd1RvUVMwZ0lnUWFab2U1UDlucCtFZ2lSdGRCcnF0Tk9IZXpOYjdPN2xUaGhsbjI5MGl0dz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo= Version:]]
+2018/09/19 06:59:42 [DEBUG] newEnrollmentResponse orderer1-org0
+2018/09/19 06:59:42 [INFO] Stored client certificate at /data/orderers/orderer1-org0/msp/signcerts/cert.pem
+2018/09/19 06:59:42 [INFO] Stored root CA certificate at /data/orderers/orderer1-org0/msp/cacerts/ca-org0-7054.pem
+
+ORDERER_GENERAL_LOCALMSPDIR=/data/orderers/orderer1-org0/msp
+ORDERER_GENERAL_GENESISFILE=/data/genesis.block
+ORDERER_GENERAL_LOCALMSPID=org0MSP
+ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+ORDERER_GENERAL_LOGLEVEL=debug
+ORDERER_GENERAL_GENESISMETHOD=file
+2018-09-19 06:59:42.703 UTC [localconfig] completeInitialization -> INFO 001[0m Kafka.Version unset, setting to 0.10.2.0
+[36m2018-09-19 06:59:42.706 UTC [bccsp_sw] openKeyStore -> DEBU 002[0m KeyStore opened at [/data/orderers/orderer1-org0/msp/keystore]...done
+[36m2018-09-19 06:59:42.706 UTC [bccsp] initBCCSP -> DEBU 003[0m Initialize BCCSP [SW]
+[36m2018-09-19 06:59:42.706 UTC [msp] getPemMaterialFromDir -> DEBU 004[0m Reading directory /data/orderers/orderer1-org0/msp/signcerts
+[36m2018-09-19 06:59:42.707 UTC [msp] getPemMaterialFromDir -> DEBU 005[0m Inspecting file /data/orderers/orderer1-org0/msp/signcerts/cert.pem
+[36m2018-09-19 06:59:42.708 UTC [msp] getPemMaterialFromDir -> DEBU 006[0m Reading directory /data/orderers/orderer1-org0/msp/cacerts
+[36m2018-09-19 06:59:42.709 UTC [msp] getPemMaterialFromDir -> DEBU 007[0m Inspecting file /data/orderers/orderer1-org0/msp/cacerts/ca-org0-7054.pem
+[36m2018-09-19 06:59:42.710 UTC [msp] getPemMaterialFromDir -> DEBU 008[0m Reading directory /data/orderers/orderer1-org0/msp/admincerts
+[36m2018-09-19 06:59:42.711 UTC [msp] getPemMaterialFromDir -> DEBU 009[0m Inspecting file /data/orderers/orderer1-org0/msp/admincerts/cert.pem
+[36m2018-09-19 06:59:42.712 UTC [msp] getPemMaterialFromDir -> DEBU 00a[0m Reading directory /data/orderers/orderer1-org0/msp/intermediatecerts
+[36m2018-09-19 06:59:42.712 UTC [msp] getMspConfig -> DEBU 00b[0m Intermediate certs folder not found at [/data/orderers/orderer1-org0/msp/intermediatecerts]. Skipping. [stat /data/orderers/orderer1-org0/msp/intermediatecerts: no such file or directory]
+[36m2018-09-19 06:59:42.712 UTC [msp] getPemMaterialFromDir -> DEBU 00c[0m Reading directory /data/orderers/orderer1-org0/msp/tlscacerts
+[36m2018-09-19 06:59:42.713 UTC [msp] getMspConfig -> DEBU 00d[0m TLS CA certs folder not found at [/data/orderers/orderer1-org0/msp/tlsintermediatecerts]. Skipping and ignoring TLS intermediate CA folder. [stat /data/orderers/orderer1-org0/msp/tlscacerts: no such file or directory]
+[36m2018-09-19 06:59:42.713 UTC [msp] getPemMaterialFromDir -> DEBU 00e[0m Reading directory /data/orderers/orderer1-org0/msp/crls
+[36m2018-09-19 06:59:42.713 UTC [msp] getMspConfig -> DEBU 00f[0m crls folder not found at [/data/orderers/orderer1-org0/msp/crls]. Skipping. [stat /data/orderers/orderer1-org0/msp/crls: no such file or directory]
+[36m2018-09-19 06:59:42.713 UTC [msp] getMspConfig -> DEBU 010[0m MSP configuration file not found at [/data/orderers/orderer1-org0/msp/config.yaml]: [stat /data/orderers/orderer1-org0/msp/config.yaml: no such file or directory]
+[36m2018-09-19 06:59:42.713 UTC [msp] newBccspMsp -> DEBU 011[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 06:59:42.713 UTC [msp] New -> DEBU 012[0m Creating Cache-MSP instance
+[36m2018-09-19 06:59:42.713 UTC [msp] loadLocaMSP -> DEBU 013[0m Created new local MSP
+[36m2018-09-19 06:59:42.714 UTC [msp] Setup -> DEBU 014[0m Setting up MSP instance org0MSP
+[36m2018-09-19 06:59:42.714 UTC [msp/identity] newIdentity -> DEBU 015[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.714 UTC [msp/identity] newIdentity -> DEBU 016[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.725 UTC [msp/identity] newIdentity -> DEBU 017[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICpTCCAkugAwIBAgIUEPuTHTdD+1iCYimBbUqvRJfCosEwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowZjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEQ
+MA4GA1UECxMHb3JkZXJlcjEWMBQGA1UEAxMNb3JkZXJlcjEtb3JnMDBZMBMGByqG
+SM49AgEGCCqGSM49AwEHA0IABNVrOgv2hCfCYwCVl/5aEI8ToQyvjs/9VuKPjz2F
+DQdVkxCr8FyOXCuw32KeibdXFYqiVjBJSnTS8yIbb3nF/3ajgd0wgdowDgYDVR0P
+AQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFE6QluatC4eVvBnvEuXq
+RMxjmHTtMB8GA1UdIwQYMBaAFEFfqrt4DEwmWA+wzigj+R4kTaZVMBcGA1UdEQQQ
+MA6CDGI1ODRhNjFiZjAzNTBhBggqAwQFBgcIAQRVeyJhdHRycyI6eyJoZi5BZmZp
+bGlhdGlvbiI6IiIsImhmLkVucm9sbG1lbnRJRCI6Im9yZGVyZXIxLW9yZzAiLCJo
+Zi5UeXBlIjoib3JkZXJlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEA6kLx6loUKtJz
+bh7P6Z5LKsTTrJz8/3Rz8ak7lr8EFMMCIClsdv0KWPI4OYGbUEsvQFS2uSqbNCSE
+8JV7nf3iecHn
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.728 UTC [bccsp_sw] loadPrivateKey -> DEBU 018[0m Loading private key [2c4146d587503502e9bb9fea339f60e9e219bfa49957f236ab4057bb569d29bf] at [/data/orderers/orderer1-org0/msp/keystore/2c4146d587503502e9bb9fea339f60e9e219bfa49957f236ab4057bb569d29bf_sk]...
+[36m2018-09-19 06:59:42.729 UTC [msp/identity] newIdentity -> DEBU 019[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICpTCCAkugAwIBAgIUEPuTHTdD+1iCYimBbUqvRJfCosEwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowZjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEQ
+MA4GA1UECxMHb3JkZXJlcjEWMBQGA1UEAxMNb3JkZXJlcjEtb3JnMDBZMBMGByqG
+SM49AgEGCCqGSM49AwEHA0IABNVrOgv2hCfCYwCVl/5aEI8ToQyvjs/9VuKPjz2F
+DQdVkxCr8FyOXCuw32KeibdXFYqiVjBJSnTS8yIbb3nF/3ajgd0wgdowDgYDVR0P
+AQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFE6QluatC4eVvBnvEuXq
+RMxjmHTtMB8GA1UdIwQYMBaAFEFfqrt4DEwmWA+wzigj+R4kTaZVMBcGA1UdEQQQ
+MA6CDGI1ODRhNjFiZjAzNTBhBggqAwQFBgcIAQRVeyJhdHRycyI6eyJoZi5BZmZp
+bGlhdGlvbiI6IiIsImhmLkVucm9sbG1lbnRJRCI6Im9yZGVyZXIxLW9yZzAiLCJo
+Zi5UeXBlIjoib3JkZXJlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEA6kLx6loUKtJz
+bh7P6Z5LKsTTrJz8/3Rz8ak7lr8EFMMCIClsdv0KWPI4OYGbUEsvQFS2uSqbNCSE
+8JV7nf3iecHn
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.729 UTC [msp] setupSigningIdentity -> DEBU 01a[0m Signing identity expires at 2019-09-19 07:00:00 +0000 UTC
+[36m2018-09-19 06:59:42.729 UTC [msp] Validate -> DEBU 01b[0m MSP org0MSP validating identity
+2018-09-19 06:59:42.730 UTC [orderer/common/server] prettyPrintStruct -> INFO 01c[0m Orderer config values:
+	General.LedgerType = "file"
+	General.ListenAddress = "0.0.0.0"
+	General.ListenPort = 7050
+	General.TLS.Enabled = false
+	General.TLS.PrivateKey = "/etc/hyperledger/fabric/tls/server.key"
+	General.TLS.Certificate = "/etc/hyperledger/fabric/tls/server.crt"
+	General.TLS.RootCAs = [/etc/hyperledger/fabric/tls/ca.crt]
+	General.TLS.ClientAuthRequired = false
+	General.TLS.ClientRootCAs = []
+	General.Keepalive.ServerMinInterval = 1m0s
+	General.Keepalive.ServerInterval = 2h0m0s
+	General.Keepalive.ServerTimeout = 20s
+	General.GenesisMethod = "file"
+	General.GenesisProfile = "SampleInsecureSolo"
+	General.SystemChannel = "test-system-channel-name"
+	General.GenesisFile = "/data/genesis.block"
+	General.Profile.Enabled = false
+	General.Profile.Address = "0.0.0.0:6060"
+	General.LogLevel = "debug"
+	General.LogFormat = "%{color}%{time:2006-01-02 15:04:05.000 MST} [%{module}] %{shortfunc} -> %{level:.4s} %{id:03x}%{color:reset} %{message}"
+	General.LocalMSPDir = "/data/orderers/orderer1-org0/msp"
+	General.LocalMSPID = "org0MSP"
+	General.BCCSP.ProviderName = "SW"
+	General.BCCSP.SwOpts.SecLevel = 256
+	General.BCCSP.SwOpts.HashFamily = "SHA2"
+	General.BCCSP.SwOpts.Ephemeral = false
+	General.BCCSP.SwOpts.FileKeystore.KeyStorePath = "/data/orderers/orderer1-org0/msp/keystore"
+	General.BCCSP.SwOpts.DummyKeystore =
+	General.BCCSP.PluginOpts =
+	General.Authentication.TimeWindow = 15m0s
+	FileLedger.Location = "/var/hyperledger/production/orderer"
+	FileLedger.Prefix = "hyperledger-fabric-ordererledger"
+	RAMLedger.HistorySize = 1000
+	Kafka.Retry.ShortInterval = 5s
+	Kafka.Retry.ShortTotal = 10m0s
+	Kafka.Retry.LongInterval = 5m0s
+	Kafka.Retry.LongTotal = 12h0m0s
+	Kafka.Retry.NetworkTimeouts.DialTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.ReadTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.WriteTimeout = 10s
+	Kafka.Retry.Metadata.RetryMax = 3
+	Kafka.Retry.Metadata.RetryBackoff = 250ms
+	Kafka.Retry.Producer.RetryMax = 3
+	Kafka.Retry.Producer.RetryBackoff = 100ms
+	Kafka.Retry.Consumer.RetryBackoff = 2s
+	Kafka.Verbose = false
+	Kafka.Version = 0.10.2.0
+	Kafka.TLS.Enabled = false
+	Kafka.TLS.PrivateKey = ""
+	Kafka.TLS.Certificate = ""
+	Kafka.TLS.RootCAs = []
+	Kafka.TLS.ClientAuthRequired = false
+	Kafka.TLS.ClientRootCAs = []
+	Debug.BroadcastTraceDir = ""
+	Debug.DeliverTraceDir = ""
+[36m2018-09-19 06:59:42.730 UTC [orderer/common/server] createLedgerFactory -> DEBU 01d[0m Ledger dir: /var/hyperledger/production/orderer
+[36m2018-09-19 06:59:42.730 UTC [kvledger.util] CreateDirIfMissing -> DEBU 01e[0m CreateDirIfMissing [/var/hyperledger/production/orderer/index/]
+[36m2018-09-19 06:59:42.730 UTC [kvledger.util] logDirStatus -> DEBU 01f[0m Before creating dir - [/var/hyperledger/production/orderer/index/] does not exist
+[36m2018-09-19 06:59:42.730 UTC [kvledger.util] logDirStatus -> DEBU 020[0m After creating dir - [/var/hyperledger/production/orderer/index/] exists
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] newBlockfileMgr -> DEBU 021[0m newBlockfileMgr() initializing file-based block storage for ledger: testchainid 
+[36m2018-09-19 06:59:42.735 UTC [kvledger.util] CreateDirIfMissing -> DEBU 022[0m CreateDirIfMissing [/var/hyperledger/production/orderer/chains/testchainid/]
+[36m2018-09-19 06:59:42.735 UTC [kvledger.util] logDirStatus -> DEBU 023[0m Before creating dir - [/var/hyperledger/production/orderer/chains/testchainid/] does not exist
+[36m2018-09-19 06:59:42.735 UTC [kvledger.util] logDirStatus -> DEBU 024[0m After creating dir - [/var/hyperledger/production/orderer/chains/testchainid/] exists
+2018-09-19 06:59:42.735 UTC [fsblkstorage] newBlockfileMgr -> INFO 025[0m Getting block information from block storage
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 026[0m Retrieving checkpoint info from block files
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] retrieveLastFileSuffix -> DEBU 027[0m retrieveLastFileSuffix()
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] retrieveLastFileSuffix -> DEBU 028[0m retrieveLastFileSuffix() - biggestFileNum = -1
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 029[0m Last file number found = -1
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 02a[0m No block file found
+[36m2018-09-19 06:59:42.735 UTC [fsblkstorage] newBlockfileMgr -> DEBU 02b[0m Info constructed by scanning the blocks dir = (*fsblkstorage.checkpointInfo)(0xc4200acd80)(latestFileChunkSuffixNum=[0], latestFileChunksize=[0], isChainEmpty=[true], lastBlockNumber=[0])
+[36m2018-09-19 06:59:42.736 UTC [fsblkstorage] newBlockIndex -> DEBU 02c[0m newBlockIndex() - indexItems:[[BlockNum]]
+[36m2018-09-19 06:59:42.738 UTC [fsblkstorage] indexBlock -> DEBU 02d[0m Indexing block [blockNum=0, blockHash=[]byte{0x58, 0xc0, 0x1d, 0x47, 0x65, 0xa5, 0xdc, 0x7d, 0x98, 0xc3, 0x95, 0x8f, 0x52, 0xd0, 0x46, 0xae, 0xd2, 0x3b, 0x18, 0xd2, 0xef, 0x5c, 0x5, 0x5c, 0xa6, 0x27, 0xa5, 0xde, 0x23, 0xed, 0x42, 0x66} txOffsets=
+txId=367dc01cda05b3131f964bb6713682f258d8533a9d975eb68f8d67d4baa992da locPointer=offset=38, bytesLength=4924
+]
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] updateCheckpoint -> DEBU 02e[0m Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[4967], isChainEmpty=[false], lastBlockNumber=[0]
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] Next -> DEBU 02f[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] newBlockfileStream -> DEBU 030[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/testchainid/blockfile_000000], startOffset=[0]
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 031[0m Remaining bytes=[4967], Going to peek [8] bytes
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 032[0m Returning blockbytes - length=[4965], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 033[0m blockbytes [4965] read from file [0]
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] Next -> DEBU 034[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] newBlockfileStream -> DEBU 035[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/testchainid/blockfile_000000], startOffset=[0]
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 036[0m Remaining bytes=[4967], Going to peek [8] bytes
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 037[0m Returning blockbytes - length=[4965], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 06:59:42.739 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 038[0m blockbytes [4965] read from file [0]
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] NewStandardValues -> DEBU 039[0m Initializing protos for *channelconfig.ChannelProtos
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 03a[0m Processing field: HashingAlgorithm
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 03b[0m Processing field: BlockDataHashingStructure
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 03c[0m Processing field: OrdererAddresses
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 03d[0m Processing field: Consortium
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 03e[0m Processing field: Capabilities
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] NewStandardValues -> DEBU 03f[0m Initializing protos for *channelconfig.OrdererProtos
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 040[0m Processing field: ConsensusType
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 041[0m Processing field: BatchSize
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 042[0m Processing field: BatchTimeout
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 043[0m Processing field: KafkaBrokers
+[36m2018-09-19 06:59:42.739 UTC [common/channelconfig] initializeProtosStruct -> DEBU 044[0m Processing field: ChannelRestrictions
+[36m2018-09-19 06:59:42.740 UTC [common/channelconfig] initializeProtosStruct -> DEBU 045[0m Processing field: Capabilities
+[36m2018-09-19 06:59:42.740 UTC [common/channelconfig] NewStandardValues -> DEBU 046[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 06:59:42.740 UTC [common/channelconfig] initializeProtosStruct -> DEBU 047[0m Processing field: MSP
+[36m2018-09-19 06:59:42.740 UTC [common/channelconfig] validateMSP -> DEBU 048[0m Setting up MSP for org org0
+[36m2018-09-19 06:59:42.740 UTC [msp] newBccspMsp -> DEBU 049[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 06:59:42.740 UTC [msp] New -> DEBU 04a[0m Creating Cache-MSP instance
+[36m2018-09-19 06:59:42.740 UTC [msp] Setup -> DEBU 04b[0m Setting up MSP instance org0MSP
+[36m2018-09-19 06:59:42.740 UTC [msp/identity] newIdentity -> DEBU 04c[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.740 UTC [msp/identity] newIdentity -> DEBU 04d[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.741 UTC [msp] Validate -> DEBU 04e[0m MSP org0MSP validating identity
+[36m2018-09-19 06:59:42.741 UTC [common/channelconfig] NewStandardValues -> DEBU 04f[0m Initializing protos for *channelconfig.ConsortiumProtos
+[36m2018-09-19 06:59:42.741 UTC [common/channelconfig] initializeProtosStruct -> DEBU 050[0m Processing field: ChannelCreationPolicy
+[36m2018-09-19 06:59:42.741 UTC [common/channelconfig] NewStandardValues -> DEBU 051[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 06:59:42.741 UTC [common/channelconfig] initializeProtosStruct -> DEBU 052[0m Processing field: MSP
+[36m2018-09-19 06:59:42.741 UTC [common/channelconfig] validateMSP -> DEBU 053[0m Setting up MSP for org org0
+[36m2018-09-19 06:59:42.741 UTC [msp] newBccspMsp -> DEBU 054[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 06:59:42.741 UTC [msp] New -> DEBU 055[0m Creating Cache-MSP instance
+[36m2018-09-19 06:59:42.741 UTC [msp] Setup -> DEBU 056[0m Setting up MSP instance org0MSP
+[36m2018-09-19 06:59:42.741 UTC [msp/identity] newIdentity -> DEBU 057[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.741 UTC [msp/identity] newIdentity -> DEBU 058[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 06:59:42.742 UTC [msp] Validate -> DEBU 059[0m MSP org0MSP validating identity
+[36m2018-09-19 06:59:42.742 UTC [msp] Setup -> DEBU 05a[0m Setting up the MSP manager (1 msps)
+[36m2018-09-19 06:59:42.742 UTC [msp] Setup -> DEBU 05b[0m MSP manager setup complete, setup 1 msps
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 05c[0m Proposed new policy Admins for Channel/Orderer/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 05d[0m Proposed new policy Readers for Channel/Orderer/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 05e[0m Proposed new policy Writers for Channel/Orderer/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 05f[0m Proposed new policy Readers for Channel/Orderer
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 060[0m Proposed new policy Writers for Channel/Orderer
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 061[0m Proposed new policy BlockValidation for Channel/Orderer
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 062[0m Proposed new policy Admins for Channel/Orderer
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 063[0m Proposed new policy Writers for Channel/Consortiums/MyConsortium/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 064[0m Proposed new policy Admins for Channel/Consortiums/MyConsortium/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 065[0m Proposed new policy Readers for Channel/Consortiums/MyConsortium/org0
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 066[0m Proposed new policy Admins for Channel/Consortiums
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 067[0m Proposed new policy Admins for Channel
+[36m2018-09-19 06:59:42.742 UTC [policies] GetPolicy -> DEBU 068[0m Returning dummy reject all policy because Readers could not be found in Channel/Consortiums/Readers
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 069[0m Proposed new policy Readers for Channel
+[36m2018-09-19 06:59:42.742 UTC [policies] GetPolicy -> DEBU 06a[0m Returning dummy reject all policy because Writers could not be found in Channel/Consortiums/Writers
+[36m2018-09-19 06:59:42.742 UTC [policies] NewManagerImpl -> DEBU 06b[0m Proposed new policy Writers for Channel
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 06c[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 06d[0m Adding to config map: [Group]  /Channel/Orderer
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 06e[0m Adding to config map: [Group]  /Channel/Orderer/org0
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 06f[0m Adding to config map: [Value]  /Channel/Orderer/org0/MSP
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 070[0m Adding to config map: [Policy] /Channel/Orderer/org0/Admins
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 071[0m Adding to config map: [Policy] /Channel/Orderer/org0/Readers
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 072[0m Adding to config map: [Policy] /Channel/Orderer/org0/Writers
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 073[0m Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 074[0m Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 075[0m Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+[36m2018-09-19 06:59:42.743 UTC [common/configtx] addToMap -> DEBU 076[0m Adding to config map: [Value]  /Channel/Orderer/BatchSize
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 077[0m Adding to config map: [Policy] /Channel/Orderer/Writers
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 078[0m Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 079[0m Adding to config map: [Policy] /Channel/Orderer/Admins
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07a[0m Adding to config map: [Policy] /Channel/Orderer/Readers
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07b[0m Adding to config map: [Group]  /Channel/Consortiums
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07c[0m Adding to config map: [Group]  /Channel/Consortiums/MyConsortium
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07d[0m Adding to config map: [Group]  /Channel/Consortiums/MyConsortium/org0
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07e[0m Adding to config map: [Value]  /Channel/Consortiums/MyConsortium/org0/MSP
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 07f[0m Adding to config map: [Policy] /Channel/Consortiums/MyConsortium/org0/Writers
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 080[0m Adding to config map: [Policy] /Channel/Consortiums/MyConsortium/org0/Admins
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 081[0m Adding to config map: [Policy] /Channel/Consortiums/MyConsortium/org0/Readers
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 082[0m Adding to config map: [Value]  /Channel/Consortiums/MyConsortium/ChannelCreationPolicy
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 083[0m Adding to config map: [Policy] /Channel/Consortiums/Admins
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 084[0m Adding to config map: [Value]  /Channel/HashingAlgorithm
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 085[0m Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 086[0m Adding to config map: [Value]  /Channel/OrdererAddresses
+[36m2018-09-19 06:59:42.744 UTC [common/configtx] addToMap -> DEBU 087[0m Adding to config map: [Policy] /Channel/Admins
+[36m2018-09-19 06:59:42.745 UTC [common/configtx] addToMap -> DEBU 088[0m Adding to config map: [Policy] /Channel/Readers
+[36m2018-09-19 06:59:42.745 UTC [common/configtx] addToMap -> DEBU 089[0m Adding to config map: [Policy] /Channel/Writers
+[36m2018-09-19 06:59:42.745 UTC [common/channelconfig] LogSanityChecks -> DEBU 08a[0m As expected, current configuration has policy '/Channel/Readers'
+[36m2018-09-19 06:59:42.745 UTC [common/channelconfig] LogSanityChecks -> DEBU 08b[0m As expected, current configuration has policy '/Channel/Writers'
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 08c[0m Manager Channel looking up path [Application]
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 08d[0m Manager Channel has managers Orderer
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 08e[0m Manager Channel has managers Consortiums
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 08f[0m Manager Channel looking up path [Orderer]
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 090[0m Manager Channel has managers Orderer
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 091[0m Manager Channel has managers Consortiums
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 092[0m Manager Channel/Orderer looking up path []
+[36m2018-09-19 06:59:42.745 UTC [policies] Manager -> DEBU 093[0m Manager Channel/Orderer has managers org0
+[36m2018-09-19 06:59:42.745 UTC [common/channelconfig] LogSanityChecks -> DEBU 094[0m As expected, current configuration has policy '/Channel/Orderer/BlockValidation'
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] Next -> DEBU 095[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] newBlockfileStream -> DEBU 096[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/testchainid/blockfile_000000], startOffset=[0]
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 097[0m Remaining bytes=[4967], Going to peek [8] bytes
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 098[0m Returning blockbytes - length=[4965], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 099[0m blockbytes [4965] read from file [0]
+[36m2018-09-19 06:59:42.745 UTC [orderer/commmon/multichannel] newBlockWriter -> DEBU 09a[0m [channel: testchainid] Creating block writer for tip of chain (blockNumber=0, lastConfigBlockNum=0, lastConfigSeq=0)
+[36m2018-09-19 06:59:42.745 UTC [orderer/commmon/multichannel] newChainSupport -> DEBU 09b[0m [channel: testchainid] Done creating channel support resources
+[36m2018-09-19 06:59:42.745 UTC [orderer/common/msgprocessor] NewSystemChannel -> DEBU 09c[0m Creating system channel msg processor for channel testchainid
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] Next -> DEBU 09d[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] newBlockfileStream -> DEBU 09e[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/testchainid/blockfile_000000], startOffset=[0]
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 09f[0m Remaining bytes=[4967], Going to peek [8] bytes
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 0a0[0m Returning blockbytes - length=[4965], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 06:59:42.745 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 0a1[0m blockbytes [4965] read from file [0]
+2018-09-19 06:59:42.745 UTC [orderer/commmon/multichannel] NewRegistrar -> INFO 0a2[0m Starting system channel 'testchainid' with genesis block hash 58c01d4765a5dc7d98c3958f52d046aed23b18d2ef5c055ca627a5de23ed4266 and orderer type solo
+2018-09-19 06:59:42.745 UTC [orderer/common/server] Start -> INFO 0a3[0m Starting orderer:
+ Version: 1.2.0
+ Commit SHA: 00c8764
+ Go version: go1.10
+ OS/Arch: linux/amd64
+ Experimental features: true
+2018-09-19 06:59:42.745 UTC [orderer/common/server] Start -> INFO 0a4[0m Beginning to serve requests
+[36m2018-09-19 07:00:10.914 UTC [orderer/common/server] Deliver -> DEBU 0a5[0m Starting new Deliver handler
+[36m2018-09-19 07:00:10.914 UTC [common/deliver] Handle -> DEBU 0a6[0m Starting new deliver loop for 172.23.0.3:38268
+[36m2018-09-19 07:00:10.914 UTC [common/deliver] Handle -> DEBU 0a7[0m Attempting to read seek info message from 172.23.0.3:38268
+[36m2018-09-19 07:00:10.917 UTC [orderer/common/server] Broadcast -> DEBU 0a8[0m Starting new Broadcast handler
+[36m2018-09-19 07:00:10.917 UTC [orderer/common/broadcast] Handle -> DEBU 0a9[0m Starting new broadcast loop for 172.23.0.3:38270
+[36m2018-09-19 07:00:10.917 UTC [orderer/common/broadcast] Handle -> DEBU 0aa[0m [channel: mychannel] Broadcast is processing config update message from 172.23.0.3:38270
+[36m2018-09-19 07:00:10.917 UTC [orderer/common/msgprocessor] ProcessConfigUpdateMsg -> DEBU 0ab[0m Processing config update tx with system channel message processor for channel ID mychannel
+[36m2018-09-19 07:00:10.917 UTC [orderer/common/msgprocessor] ProcessConfigUpdateMsg -> DEBU 0ac[0m Processing channel create tx for channel mychannel on system channel testchainid
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] NewStandardValues -> DEBU 0ad[0m Initializing protos for *channelconfig.ChannelProtos
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0ae[0m Processing field: HashingAlgorithm
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0af[0m Processing field: BlockDataHashingStructure
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b0[0m Processing field: OrdererAddresses
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b1[0m Processing field: Consortium
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b2[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] NewStandardValues -> DEBU 0b3[0m Initializing protos for *channelconfig.OrdererProtos
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b4[0m Processing field: ConsensusType
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b5[0m Processing field: BatchSize
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b6[0m Processing field: BatchTimeout
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b7[0m Processing field: KafkaBrokers
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b8[0m Processing field: ChannelRestrictions
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0b9[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] NewStandardValues -> DEBU 0ba[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0bb[0m Processing field: MSP
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] validateMSP -> DEBU 0bc[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.917 UTC [msp] newBccspMsp -> DEBU 0bd[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.917 UTC [msp] New -> DEBU 0be[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.917 UTC [msp] Setup -> DEBU 0bf[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.917 UTC [msp/identity] newIdentity -> DEBU 0c0[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.917 UTC [msp/identity] newIdentity -> DEBU 0c1[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.917 UTC [msp] Validate -> DEBU 0c2[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] NewStandardValues -> DEBU 0c3[0m Initializing protos for *channelconfig.ApplicationProtos
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0c4[0m Processing field: ACLs
+[36m2018-09-19 07:00:10.917 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0c5[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] NewStandardValues -> DEBU 0c6[0m Initializing protos for *channelconfig.ApplicationOrgProtos
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0c7[0m Processing field: AnchorPeers
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] NewStandardValues -> DEBU 0c8[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] initializeProtosStruct -> DEBU 0c9[0m Processing field: MSP
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] Validate -> DEBU 0ca[0m Anchor peers for org org0 are 
+[36m2018-09-19 07:00:10.918 UTC [common/channelconfig] validateMSP -> DEBU 0cb[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.918 UTC [msp] newBccspMsp -> DEBU 0cc[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.918 UTC [msp] New -> DEBU 0cd[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.918 UTC [msp] Setup -> DEBU 0ce[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.918 UTC [msp/identity] newIdentity -> DEBU 0cf[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.918 UTC [msp/identity] newIdentity -> DEBU 0d0[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.918 UTC [msp] Validate -> DEBU 0d1[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.918 UTC [msp] Setup -> DEBU 0d2[0m Setting up the MSP manager (1 msps)
+[36m2018-09-19 07:00:10.918 UTC [msp] Setup -> DEBU 0d3[0m MSP manager setup complete, setup 1 msps
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d4[0m Proposed new policy Readers for Channel/Application/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d5[0m Proposed new policy Writers for Channel/Application/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d6[0m Proposed new policy Admins for Channel/Application/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d7[0m Proposed new policy ChannelCreationPolicy for Channel/Application
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d8[0m Proposed new policy Admins for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0d9[0m Proposed new policy Readers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0da[0m Proposed new policy Writers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0db[0m Proposed new policy Readers for Channel/Orderer
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0dc[0m Proposed new policy Writers for Channel/Orderer
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0dd[0m Proposed new policy BlockValidation for Channel/Orderer
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0de[0m Proposed new policy Admins for Channel/Orderer
+[36m2018-09-19 07:00:10.918 UTC [policies] GetPolicy -> DEBU 0df[0m Returning dummy reject all policy because Readers could not be found in Channel/Application/Readers
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0e0[0m Proposed new policy Readers for Channel
+[36m2018-09-19 07:00:10.918 UTC [policies] GetPolicy -> DEBU 0e1[0m Returning dummy reject all policy because Writers could not be found in Channel/Application/Writers
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0e2[0m Proposed new policy Writers for Channel
+[36m2018-09-19 07:00:10.918 UTC [policies] GetPolicy -> DEBU 0e3[0m Returning dummy reject all policy because Admins could not be found in Channel/Application/Admins
+[36m2018-09-19 07:00:10.918 UTC [policies] NewManagerImpl -> DEBU 0e4[0m Proposed new policy Admins for Channel
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0e5[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0e6[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0e7[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0e8[0m Adding to config map: [Value]  /Channel/Application/org0/MSP
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0e9[0m Adding to config map: [Policy] /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0ea[0m Adding to config map: [Policy] /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0eb[0m Adding to config map: [Policy] /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0ec[0m Adding to config map: [Policy] /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0ed[0m Adding to config map: [Group]  /Channel/Orderer
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0ee[0m Adding to config map: [Group]  /Channel/Orderer/org0
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0ef[0m Adding to config map: [Value]  /Channel/Orderer/org0/MSP
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f0[0m Adding to config map: [Policy] /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f1[0m Adding to config map: [Policy] /Channel/Orderer/org0/Admins
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f2[0m Adding to config map: [Policy] /Channel/Orderer/org0/Readers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f3[0m Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f4[0m Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f5[0m Adding to config map: [Value]  /Channel/Orderer/BatchSize
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f6[0m Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f7[0m Adding to config map: [Policy] /Channel/Orderer/Readers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f8[0m Adding to config map: [Policy] /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.918 UTC [common/configtx] addToMap -> DEBU 0f9[0m Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0fa[0m Adding to config map: [Policy] /Channel/Orderer/Admins
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0fb[0m Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0fc[0m Adding to config map: [Value]  /Channel/OrdererAddresses
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0fd[0m Adding to config map: [Value]  /Channel/HashingAlgorithm
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0fe[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 0ff[0m Adding to config map: [Policy] /Channel/Readers
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 100[0m Adding to config map: [Policy] /Channel/Writers
+[36m2018-09-19 07:00:10.919 UTC [common/configtx] addToMap -> DEBU 101[0m Adding to config map: [Policy] /Channel/Admins
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 102[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 103[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 104[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 105[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 106[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.920 UTC [common/configtx] addToMap -> DEBU 107[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] addToMap -> DEBU 108[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] addToMap -> DEBU 109[0m Adding to config map: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] addToMap -> DEBU 10a[0m Adding to config map: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] addToMap -> DEBU 10b[0m Adding to config map: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] addToMap -> DEBU 10c[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] verifyDeltaSet -> DEBU 10d[0m Processing change to key: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.921 UTC [common/configtx] verifyDeltaSet -> DEBU 10e[0m Processing change to key: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.922 UTC [common/configtx] policyForItem -> DEBU 10f[0m Getting policy for item Application with mod_policy ChannelCreationPolicy
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 110[0m Manager Channel looking up path []
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 111[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 112[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 113[0m Manager Channel looking up path [Application]
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 114[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 115[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 116[0m Manager Channel/Application looking up path []
+[36m2018-09-19 07:00:10.922 UTC [policies] Manager -> DEBU 117[0m Manager Channel/Application has managers org0
+[36m2018-09-19 07:00:10.922 UTC [policies] Evaluate -> DEBU 118[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/ChannelCreationPolicy ==
+[36m2018-09-19 07:00:10.922 UTC [policies] Evaluate -> DEBU 119[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:10.922 UTC [policies] Evaluate -> DEBU 11a[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Admins ==
+2018-09-19 07:00:10.922 UTC [msp] DeserializeIdentity -> INFO 11b[0m Obtaining identity
+[36m2018-09-19 07:00:10.922 UTC [msp/identity] newIdentity -> DEBU 11c[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.922 UTC [cauthdsl] func1 -> DEBU 11d[0m 0xc42000e0a0 gate 1537340410922806544 evaluation starts
+[36m2018-09-19 07:00:10.922 UTC [cauthdsl] func2 -> DEBU 11e[0m 0xc42000e0a0 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:10.922 UTC [cauthdsl] func2 -> DEBU 11f[0m 0xc42000e0a0 processing identity 0 with bytes of 0a076f7267304d535012f5072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943766a4343416d576741774942416749554d586435724669444c357732456d2b61775064344f2f6c5a444d7777436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f77596a454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a45500a4d4130474131554543784d47593278705a5735304d524d774551594456515144457770685a47317062693176636d63774d466b77457759484b6f5a497a6a30430a415159494b6f5a497a6a30444151634451674145416963713671672b2f3746766f4a2b415176495276756e456e58494f366c5064696b57664e744e756d3850510a37474957516e65726a46446b43543869662b3278676a32726730647a5032444a574a2b453135333338614f422b7a43422b44414f42674e5648513842416638450a42414d434234417744415944565230544151482f424149774144416442674e56485134454667515553464371595a36564a5736317735343464716c31745356730a65616377487759445652306a42426777466f415551562b717533674d54435a594437444f4b4350354869524e706c5577467759445652305242424177446f494d0a4f54686a4e6d49354d4759784e32566a4d48384743436f44424155474277674242484e37496d463064484a7a496a7037496d466959574d7561573570644349360a496e5279645755694c434a685a47317062694936496e5279645755694c434a6f5a6935425a6d5a7062476c6864476c766269493649694973496d686d4c6b56750a636d39736247316c626e524a52434936496d466b62576c754c5739795a7a41694c434a6f5a6935556558426c496a6f69593278705a573530496e31394d416f470a43437147534d343942414d43413063414d45514349444f50336f32763638564d4e6a54525476796f76324d39454d46476a474c6c644a684a34696c68475745510a416942524e2b4e6c676352704c784c64356572442b65396c692f372f746c79384267315578726c5343464b6d47413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:10.922 UTC [msp] satisfiesPrincipalInternalPreV13 -> DEBU 120[0m Checking if identity satisfies ADMIN role for org0MSP
+[36m2018-09-19 07:00:10.922 UTC [cauthdsl] func2 -> DEBU 121[0m 0xc42000e0a0 principal matched by identity 0
+[36m2018-09-19 07:00:10.922 UTC [msp/identity] Verify -> DEBU 122[0m Verify: digest = 00000000  6d d3 f5 9f 3b 35 8d a6  4c 2e df 52 b9 6d 43 18  |m...;5..L..R.mC.|
+00000010  9c 90 df ec 87 88 d5 2e  31 d7 06 d2 29 8e da 8c  |........1...)...|
+[36m2018-09-19 07:00:10.923 UTC [msp/identity] Verify -> DEBU 123[0m Verify: sig = 00000000  30 45 02 21 00 f6 bf 7a  5c c7 bd 16 e3 90 0d 0e  |0E.!...z\.......|
+00000010  c8 9d cc 83 87 e4 ab 33  84 18 ef e7 70 33 1e 40  |.......3....p3.@|
+00000020  10 a6 71 05 a3 02 20 5e  9d e5 41 da bc 49 04 69  |..q... ^..A..I.i|
+00000030  70 fe bc d9 ea 21 ee d3  55 f3 ed 0c df 89 c8 fb  |p....!..U.......|
+00000040  db 64 e5 02 eb 9e 8f                              |.d.....|
+[36m2018-09-19 07:00:10.923 UTC [cauthdsl] func2 -> DEBU 124[0m 0xc42000e0a0 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:10.923 UTC [cauthdsl] func1 -> DEBU 125[0m 0xc42000e0a0 gate 1537340410922806544 evaluation succeeds
+[36m2018-09-19 07:00:10.923 UTC [policies] Evaluate -> DEBU 126[0m Signature set satisfies policy /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.923 UTC [policies] Evaluate -> DEBU 127[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.923 UTC [policies] Evaluate -> DEBU 128[0m Signature set satisfies policy /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.923 UTC [policies] Evaluate -> DEBU 129[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] verifyDeltaSet -> DEBU 12a[0m Processing change to key: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] verifyDeltaSet -> DEBU 12b[0m Processing change to key: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 12c[0m Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007org0MSP\020\001" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 12d[0m Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 12e[0m Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 12f[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 130[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 131[0m Setting policy for key BlockValidation to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.923 UTC [common/configtx] recurseConfigMap -> DEBU 132[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 133[0m Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007org0MSP\020\001" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 134[0m Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 135[0m Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 136[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 137[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 138[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 139[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 13a[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [common/configtx] recurseConfigMap -> DEBU 13b[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.924 UTC [msp] GetDefaultSigningIdentity -> DEBU 13c[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.924 UTC [msp] GetDefaultSigningIdentity -> DEBU 13d[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.924 UTC [msp/identity] Sign -> DEBU 13e[0m Sign: plaintext: 0A94080A1508011A0608FAE787DD0522...2F45CDCB4AE2972953615AA2D2147634 
+[36m2018-09-19 07:00:10.924 UTC [msp/identity] Sign -> DEBU 13f[0m Sign: digest: BE2B3519498030C5B8F0956F93EED398C4DEB7B486213BDFAE042D393A74AA0E 
+[36m2018-09-19 07:00:10.924 UTC [msp] GetDefaultSigningIdentity -> DEBU 140[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.924 UTC [msp] GetDefaultSigningIdentity -> DEBU 141[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.925 UTC [msp/identity] Sign -> DEBU 142[0m Sign: plaintext: 0A96080A1708041A0608FAE787DD0522...CB699BFDDA14D3551069FFF087327F70 
+[36m2018-09-19 07:00:10.925 UTC [msp/identity] Sign -> DEBU 143[0m Sign: digest: A70023129B4BAD6C4C8FDB22EDF7939A1487EE2A322814D135532AC83655C116 
+[36m2018-09-19 07:00:10.925 UTC [policies] Evaluate -> DEBU 144[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers ==
+[36m2018-09-19 07:00:10.925 UTC [policies] Evaluate -> DEBU 145[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:10.925 UTC [policies] Evaluate -> DEBU 146[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers ==
+[36m2018-09-19 07:00:10.925 UTC [policies] Evaluate -> DEBU 147[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:10.925 UTC [policies] Evaluate -> DEBU 148[0m == Evaluating *cauthdsl.policy Policy /Channel/Orderer/org0/Writers ==
+2018-09-19 07:00:10.925 UTC [msp] DeserializeIdentity -> INFO 149[0m Obtaining identity
+[36m2018-09-19 07:00:10.925 UTC [msp/identity] newIdentity -> DEBU 14a[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICpTCCAkugAwIBAgIUEPuTHTdD+1iCYimBbUqvRJfCosEwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowZjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEQ
+MA4GA1UECxMHb3JkZXJlcjEWMBQGA1UEAxMNb3JkZXJlcjEtb3JnMDBZMBMGByqG
+SM49AgEGCCqGSM49AwEHA0IABNVrOgv2hCfCYwCVl/5aEI8ToQyvjs/9VuKPjz2F
+DQdVkxCr8FyOXCuw32KeibdXFYqiVjBJSnTS8yIbb3nF/3ajgd0wgdowDgYDVR0P
+AQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFE6QluatC4eVvBnvEuXq
+RMxjmHTtMB8GA1UdIwQYMBaAFEFfqrt4DEwmWA+wzigj+R4kTaZVMBcGA1UdEQQQ
+MA6CDGI1ODRhNjFiZjAzNTBhBggqAwQFBgcIAQRVeyJhdHRycyI6eyJoZi5BZmZp
+bGlhdGlvbiI6IiIsImhmLkVucm9sbG1lbnRJRCI6Im9yZGVyZXIxLW9yZzAiLCJo
+Zi5UeXBlIjoib3JkZXJlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEA6kLx6loUKtJz
+bh7P6Z5LKsTTrJz8/3Rz8ak7lr8EFMMCIClsdv0KWPI4OYGbUEsvQFS2uSqbNCSE
+8JV7nf3iecHn
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.925 UTC [cauthdsl] func1 -> DEBU 14b[0m 0xc42000e1f0 gate 1537340410925817844 evaluation starts
+[36m2018-09-19 07:00:10.925 UTC [cauthdsl] func2 -> DEBU 14c[0m 0xc42000e1f0 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:10.925 UTC [cauthdsl] func2 -> DEBU 14d[0m 0xc42000e1f0 processing identity 0 with bytes of 0a076f7267304d535012d1072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d49494370544343416b7567417749424167495545507554485464442b31694359696d4262557176524a66436f734577436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f775a6a454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a45510a4d4134474131554543784d4862334a6b5a584a6c636a45574d4251474131554541784d4e62334a6b5a584a6c636a457462334a6e4d44425a4d424d47427971470a534d34394167454743437147534d34394177454841304941424e56724f67763268436643597743566c2f3561454938546f5179766a732f3956754b506a7a32460a445164566b7843723846794f5843757733324b656962645846597169566a424a536e54533879496262336e462f33616a6764307767646f7744675944565230500a4151482f42415144416765414d41774741315564457745422f7751434d414177485159445652304f42425945464536516c7561744334655676426e76457558710a524d786a6d4854744d42384741315564497751594d42614146454666717274344445776d57412b777a69676a2b52346b54615a564d42634741315564455151510a4d413643444749314f4452684e6a46695a6a417a4e5442684267677141775146426763494151525665794a68644852796379493665794a6f5a6935425a6d5a700a62476c6864476c766269493649694973496d686d4c6b5675636d39736247316c626e524a52434936496d39795a4756795a5849784c5739795a7a41694c434a6f0a5a6935556558426c496a6f6962334a6b5a584a6c63694a396654414b42676771686b6a4f5051514441674e494144424641694541366b4c78366c6f554b744a7a0a62683750365a354c4b735454724a7a382f33527a38616b376c723845464d4d4349436c736476304b575049344f5947625545737651465332755371624e4353450a384a56376e6633696563486e0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:10.925 UTC [msp] satisfiesPrincipalInternalPreV13 -> DEBU 14e[0m Checking if identity satisfies MEMBER role for org0MSP
+[36m2018-09-19 07:00:10.925 UTC [msp] Validate -> DEBU 14f[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.926 UTC [cauthdsl] func2 -> DEBU 150[0m 0xc42000e1f0 principal matched by identity 0
+[36m2018-09-19 07:00:10.926 UTC [msp/identity] Verify -> DEBU 151[0m Verify: digest = 00000000  a7 00 23 12 9b 4b ad 6c  4c 8f db 22 ed f7 93 9a  |..#..K.lL.."....|
+00000010  14 87 ee 2a 32 28 14 d1  35 53 2a c8 36 55 c1 16  |...*2(..5S*.6U..|
+[36m2018-09-19 07:00:10.926 UTC [msp/identity] Verify -> DEBU 152[0m Verify: sig = 00000000  30 45 02 21 00 ea da 3f  84 9b d3 69 fd 76 2c 6a  |0E.!...?...i.v,j|
+00000010  62 f2 35 88 c4 f0 5f 0a  12 06 0d 33 50 06 6d c5  |b.5..._....3P.m.|
+00000020  b2 5e 9d 5f 82 02 20 77  24 6b a3 3c 20 b1 d9 c9  |.^._.. w$k.< ...|
+00000030  35 46 a9 a3 42 20 b5 5f  35 f6 e1 42 f4 bb 60 af  |5F..B ._5..B..`.|
+00000040  09 6d 6f 3f 4f 8f d2                              |.mo?O..|
+[36m2018-09-19 07:00:10.926 UTC [cauthdsl] func2 -> DEBU 153[0m 0xc42000e1f0 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:10.926 UTC [cauthdsl] func1 -> DEBU 154[0m 0xc42000e1f0 gate 1537340410925817844 evaluation succeeds
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 155[0m Signature set satisfies policy /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 156[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 157[0m Signature set satisfies policy /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 158[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 159[0m Signature set satisfies policy /Channel/Writers
+[36m2018-09-19 07:00:10.926 UTC [policies] Evaluate -> DEBU 15a[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers
+[36m2018-09-19 07:00:10.926 UTC [common/channelconfig] NewStandardValues -> DEBU 15b[0m Initializing protos for *channelconfig.ChannelProtos
+[36m2018-09-19 07:00:10.926 UTC [common/channelconfig] initializeProtosStruct -> DEBU 15c[0m Processing field: HashingAlgorithm
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 15d[0m Processing field: BlockDataHashingStructure
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 15e[0m Processing field: OrdererAddresses
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 15f[0m Processing field: Consortium
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 160[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] NewStandardValues -> DEBU 161[0m Initializing protos for *channelconfig.OrdererProtos
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 162[0m Processing field: ConsensusType
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 163[0m Processing field: BatchSize
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 164[0m Processing field: BatchTimeout
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 165[0m Processing field: KafkaBrokers
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 166[0m Processing field: ChannelRestrictions
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 167[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] NewStandardValues -> DEBU 168[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] initializeProtosStruct -> DEBU 169[0m Processing field: MSP
+[36m2018-09-19 07:00:10.927 UTC [common/channelconfig] validateMSP -> DEBU 16a[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.927 UTC [msp] newBccspMsp -> DEBU 16b[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.927 UTC [msp] New -> DEBU 16c[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.927 UTC [msp] Setup -> DEBU 16d[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.927 UTC [msp/identity] newIdentity -> DEBU 16e[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.927 UTC [msp/identity] newIdentity -> DEBU 16f[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.928 UTC [msp] Validate -> DEBU 170[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] NewStandardValues -> DEBU 171[0m Initializing protos for *channelconfig.ApplicationProtos
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] initializeProtosStruct -> DEBU 172[0m Processing field: ACLs
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] initializeProtosStruct -> DEBU 173[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] NewStandardValues -> DEBU 174[0m Initializing protos for *channelconfig.ApplicationOrgProtos
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] initializeProtosStruct -> DEBU 175[0m Processing field: AnchorPeers
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] NewStandardValues -> DEBU 176[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] initializeProtosStruct -> DEBU 177[0m Processing field: MSP
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] Validate -> DEBU 178[0m Anchor peers for org org0 are 
+[36m2018-09-19 07:00:10.928 UTC [common/channelconfig] validateMSP -> DEBU 179[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.928 UTC [msp] newBccspMsp -> DEBU 17a[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.928 UTC [msp] New -> DEBU 17b[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.928 UTC [msp] Setup -> DEBU 17c[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.928 UTC [msp/identity] newIdentity -> DEBU 17d[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.929 UTC [msp/identity] newIdentity -> DEBU 17e[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.929 UTC [msp] Validate -> DEBU 17f[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.929 UTC [msp] Setup -> DEBU 180[0m Setting up the MSP manager (1 msps)
+[36m2018-09-19 07:00:10.929 UTC [msp] Setup -> DEBU 181[0m MSP manager setup complete, setup 1 msps
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 182[0m Proposed new policy Admins for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 183[0m Proposed new policy Readers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 184[0m Proposed new policy Writers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 185[0m Proposed new policy Writers for Channel/Orderer
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 186[0m Proposed new policy BlockValidation for Channel/Orderer
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 187[0m Proposed new policy Admins for Channel/Orderer
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 188[0m Proposed new policy Readers for Channel/Orderer
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 189[0m Proposed new policy Admins for Channel/Application/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 18a[0m Proposed new policy Readers for Channel/Application/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 18b[0m Proposed new policy Writers for Channel/Application/org0
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 18c[0m Proposed new policy ChannelCreationPolicy for Channel/Application
+[36m2018-09-19 07:00:10.929 UTC [policies] GetPolicy -> DEBU 18d[0m Returning dummy reject all policy because Admins could not be found in Channel/Application/Admins
+[36m2018-09-19 07:00:10.929 UTC [policies] NewManagerImpl -> DEBU 18e[0m Proposed new policy Admins for Channel
+[36m2018-09-19 07:00:10.930 UTC [policies] GetPolicy -> DEBU 18f[0m Returning dummy reject all policy because Readers could not be found in Channel/Application/Readers
+[36m2018-09-19 07:00:10.930 UTC [policies] NewManagerImpl -> DEBU 190[0m Proposed new policy Readers for Channel
+[36m2018-09-19 07:00:10.930 UTC [policies] GetPolicy -> DEBU 191[0m Returning dummy reject all policy because Writers could not be found in Channel/Application/Writers
+[36m2018-09-19 07:00:10.930 UTC [policies] NewManagerImpl -> DEBU 192[0m Proposed new policy Writers for Channel
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 193[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 194[0m Adding to config map: [Group]  /Channel/Orderer
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 195[0m Adding to config map: [Group]  /Channel/Orderer/org0
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 196[0m Adding to config map: [Value]  /Channel/Orderer/org0/MSP
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 197[0m Adding to config map: [Policy] /Channel/Orderer/org0/Admins
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 198[0m Adding to config map: [Policy] /Channel/Orderer/org0/Readers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 199[0m Adding to config map: [Policy] /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19a[0m Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19b[0m Adding to config map: [Value]  /Channel/Orderer/BatchSize
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19c[0m Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19d[0m Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19e[0m Adding to config map: [Policy] /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 19f[0m Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a0[0m Adding to config map: [Policy] /Channel/Orderer/Admins
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a1[0m Adding to config map: [Policy] /Channel/Orderer/Readers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a2[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a3[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a4[0m Adding to config map: [Value]  /Channel/Application/org0/MSP
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a5[0m Adding to config map: [Policy] /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a6[0m Adding to config map: [Policy] /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a7[0m Adding to config map: [Policy] /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:10.930 UTC [common/configtx] addToMap -> DEBU 1a8[0m Adding to config map: [Policy] /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1a9[0m Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1aa[0m Adding to config map: [Value]  /Channel/OrdererAddresses
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1ab[0m Adding to config map: [Value]  /Channel/HashingAlgorithm
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1ac[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1ad[0m Adding to config map: [Policy] /Channel/Admins
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1ae[0m Adding to config map: [Policy] /Channel/Readers
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1af[0m Adding to config map: [Policy] /Channel/Writers
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1b0[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1b1[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1b2[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1b3[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.931 UTC [common/configtx] addToMap -> DEBU 1b4[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1b5[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1b6[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1b7[0m Adding to config map: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1b8[0m Adding to config map: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1b9[0m Adding to config map: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] addToMap -> DEBU 1ba[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] verifyDeltaSet -> DEBU 1bb[0m Processing change to key: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] verifyDeltaSet -> DEBU 1bc[0m Processing change to key: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] verifyDeltaSet -> DEBU 1bd[0m Processing change to key: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] verifyDeltaSet -> DEBU 1be[0m Processing change to key: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.932 UTC [common/configtx] policyForItem -> DEBU 1bf[0m Getting policy for item Application with mod_policy ChannelCreationPolicy
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c0[0m Manager Channel looking up path []
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c1[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c2[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c3[0m Manager Channel looking up path [Application]
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c4[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c5[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c6[0m Manager Channel/Application looking up path []
+[36m2018-09-19 07:00:10.932 UTC [policies] Manager -> DEBU 1c7[0m Manager Channel/Application has managers org0
+[36m2018-09-19 07:00:10.932 UTC [policies] Evaluate -> DEBU 1c8[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/ChannelCreationPolicy ==
+[36m2018-09-19 07:00:10.932 UTC [policies] Evaluate -> DEBU 1c9[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:10.932 UTC [policies] Evaluate -> DEBU 1ca[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Admins ==
+2018-09-19 07:00:10.932 UTC [msp] DeserializeIdentity -> INFO 1cb[0m Obtaining identity
+[36m2018-09-19 07:00:10.933 UTC [msp/identity] newIdentity -> DEBU 1cc[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func1 -> DEBU 1cd[0m 0xc42000ec18 gate 1537340410933365962 evaluation starts
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func2 -> DEBU 1ce[0m 0xc42000ec18 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func2 -> DEBU 1cf[0m 0xc42000ec18 processing identity 0 with bytes of 0a076f7267304d535012f5072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943766a4343416d576741774942416749554d586435724669444c357732456d2b61775064344f2f6c5a444d7777436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f77596a454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a45500a4d4130474131554543784d47593278705a5735304d524d774551594456515144457770685a47317062693176636d63774d466b77457759484b6f5a497a6a30430a415159494b6f5a497a6a30444151634451674145416963713671672b2f3746766f4a2b415176495276756e456e58494f366c5064696b57664e744e756d3850510a37474957516e65726a46446b43543869662b3278676a32726730647a5032444a574a2b453135333338614f422b7a43422b44414f42674e5648513842416638450a42414d434234417744415944565230544151482f424149774144416442674e56485134454667515553464371595a36564a5736317735343464716c31745356730a65616377487759445652306a42426777466f415551562b717533674d54435a594437444f4b4350354869524e706c5577467759445652305242424177446f494d0a4f54686a4e6d49354d4759784e32566a4d48384743436f44424155474277674242484e37496d463064484a7a496a7037496d466959574d7561573570644349360a496e5279645755694c434a685a47317062694936496e5279645755694c434a6f5a6935425a6d5a7062476c6864476c766269493649694973496d686d4c6b56750a636d39736247316c626e524a52434936496d466b62576c754c5739795a7a41694c434a6f5a6935556558426c496a6f69593278705a573530496e31394d416f470a43437147534d343942414d43413063414d45514349444f50336f32763638564d4e6a54525476796f76324d39454d46476a474c6c644a684a34696c68475745510a416942524e2b4e6c676352704c784c64356572442b65396c692f372f746c79384267315578726c5343464b6d47413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:10.933 UTC [msp] satisfiesPrincipalInternalPreV13 -> DEBU 1d0[0m Checking if identity satisfies ADMIN role for org0MSP
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func2 -> DEBU 1d1[0m 0xc42000ec18 principal matched by identity 0
+[36m2018-09-19 07:00:10.933 UTC [msp/identity] Verify -> DEBU 1d2[0m Verify: digest = 00000000  6d d3 f5 9f 3b 35 8d a6  4c 2e df 52 b9 6d 43 18  |m...;5..L..R.mC.|
+00000010  9c 90 df ec 87 88 d5 2e  31 d7 06 d2 29 8e da 8c  |........1...)...|
+[36m2018-09-19 07:00:10.933 UTC [msp/identity] Verify -> DEBU 1d3[0m Verify: sig = 00000000  30 45 02 21 00 f6 bf 7a  5c c7 bd 16 e3 90 0d 0e  |0E.!...z\.......|
+00000010  c8 9d cc 83 87 e4 ab 33  84 18 ef e7 70 33 1e 40  |.......3....p3.@|
+00000020  10 a6 71 05 a3 02 20 5e  9d e5 41 da bc 49 04 69  |..q... ^..A..I.i|
+00000030  70 fe bc d9 ea 21 ee d3  55 f3 ed 0c df 89 c8 fb  |p....!..U.......|
+00000040  db 64 e5 02 eb 9e 8f                              |.d.....|
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func2 -> DEBU 1d4[0m 0xc42000ec18 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:10.933 UTC [cauthdsl] func1 -> DEBU 1d5[0m 0xc42000ec18 gate 1537340410933365962 evaluation succeeds
+[36m2018-09-19 07:00:10.933 UTC [policies] Evaluate -> DEBU 1d6[0m Signature set satisfies policy /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.933 UTC [policies] Evaluate -> DEBU 1d7[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.933 UTC [policies] Evaluate -> DEBU 1d8[0m Signature set satisfies policy /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.933 UTC [policies] Evaluate -> DEBU 1d9[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/ChannelCreationPolicy
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1da[0m Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007org0MSP\020\001" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1db[0m Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1dc[0m Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1dd[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1de[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1df[0m Setting policy for key BlockValidation to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e0[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e1[0m Setting policy for key Readers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e2[0m Setting policy for key Writers to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\013\022\t\n\007org0MSP" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e3[0m Setting policy for key Admins to policy:<type:1 value:"\022\010\022\006\010\001\022\002\010\000\032\r\022\013\n\007org0MSP\020\001" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e4[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e5[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e6[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e7[0m Setting policy for key Readers to policy:<type:3 value:"\n\007Readers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e8[0m Setting policy for key Writers to policy:<type:3 value:"\n\007Writers" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/configtx] recurseConfigMap -> DEBU 1e9[0m Setting policy for key Admins to policy:<type:3 value:"\n\006Admins\020\002" > mod_policy:"Admins" 
+[36m2018-09-19 07:00:10.934 UTC [common/channelconfig] NewStandardValues -> DEBU 1ea[0m Initializing protos for *channelconfig.ChannelProtos
+[36m2018-09-19 07:00:10.934 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1eb[0m Processing field: HashingAlgorithm
+[36m2018-09-19 07:00:10.934 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1ec[0m Processing field: BlockDataHashingStructure
+[36m2018-09-19 07:00:10.934 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1ed[0m Processing field: OrdererAddresses
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1ee[0m Processing field: Consortium
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1ef[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] NewStandardValues -> DEBU 1f0[0m Initializing protos for *channelconfig.OrdererProtos
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f1[0m Processing field: ConsensusType
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f2[0m Processing field: BatchSize
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f3[0m Processing field: BatchTimeout
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f4[0m Processing field: KafkaBrokers
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f5[0m Processing field: ChannelRestrictions
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f6[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] NewStandardValues -> DEBU 1f7[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] initializeProtosStruct -> DEBU 1f8[0m Processing field: MSP
+[36m2018-09-19 07:00:10.935 UTC [common/channelconfig] validateMSP -> DEBU 1f9[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.935 UTC [msp] newBccspMsp -> DEBU 1fa[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.935 UTC [msp] New -> DEBU 1fb[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.935 UTC [msp] Setup -> DEBU 1fc[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.935 UTC [msp/identity] newIdentity -> DEBU 1fd[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.935 UTC [msp/identity] newIdentity -> DEBU 1fe[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.936 UTC [msp] Validate -> DEBU 1ff[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] NewStandardValues -> DEBU 200[0m Initializing protos for *channelconfig.ApplicationProtos
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] initializeProtosStruct -> DEBU 201[0m Processing field: ACLs
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] initializeProtosStruct -> DEBU 202[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] NewStandardValues -> DEBU 203[0m Initializing protos for *channelconfig.ApplicationOrgProtos
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] initializeProtosStruct -> DEBU 204[0m Processing field: AnchorPeers
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] NewStandardValues -> DEBU 205[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] initializeProtosStruct -> DEBU 206[0m Processing field: MSP
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] Validate -> DEBU 207[0m Anchor peers for org org0 are 
+[36m2018-09-19 07:00:10.936 UTC [common/channelconfig] validateMSP -> DEBU 208[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.936 UTC [msp] newBccspMsp -> DEBU 209[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.936 UTC [msp] New -> DEBU 20a[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.936 UTC [msp] Setup -> DEBU 20b[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.936 UTC [msp/identity] newIdentity -> DEBU 20c[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.937 UTC [msp/identity] newIdentity -> DEBU 20d[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.937 UTC [msp] Validate -> DEBU 20e[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.937 UTC [msp] Setup -> DEBU 20f[0m Setting up the MSP manager (1 msps)
+[36m2018-09-19 07:00:10.937 UTC [msp] Setup -> DEBU 210[0m MSP manager setup complete, setup 1 msps
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 211[0m Proposed new policy Writers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 212[0m Proposed new policy Admins for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 213[0m Proposed new policy Readers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 214[0m Proposed new policy Writers for Channel/Orderer
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 215[0m Proposed new policy BlockValidation for Channel/Orderer
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 216[0m Proposed new policy Admins for Channel/Orderer
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 217[0m Proposed new policy Readers for Channel/Orderer
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 218[0m Proposed new policy Writers for Channel/Application/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 219[0m Proposed new policy Admins for Channel/Application/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21a[0m Proposed new policy Readers for Channel/Application/org0
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21b[0m Proposed new policy Writers for Channel/Application
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21c[0m Proposed new policy Admins for Channel/Application
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21d[0m Proposed new policy Readers for Channel/Application
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21e[0m Proposed new policy Admins for Channel
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 21f[0m Proposed new policy Readers for Channel
+[36m2018-09-19 07:00:10.937 UTC [policies] NewManagerImpl -> DEBU 220[0m Proposed new policy Writers for Channel
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 221[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 222[0m Adding to config map: [Group]  /Channel/Orderer
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 223[0m Adding to config map: [Group]  /Channel/Orderer/org0
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 224[0m Adding to config map: [Value]  /Channel/Orderer/org0/MSP
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 225[0m Adding to config map: [Policy] /Channel/Orderer/org0/Admins
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 226[0m Adding to config map: [Policy] /Channel/Orderer/org0/Readers
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 227[0m Adding to config map: [Policy] /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 228[0m Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 229[0m Adding to config map: [Value]  /Channel/Orderer/BatchSize
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 22a[0m Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 22b[0m Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+[36m2018-09-19 07:00:10.938 UTC [common/configtx] addToMap -> DEBU 22c[0m Adding to config map: [Policy] /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 22d[0m Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 22e[0m Adding to config map: [Policy] /Channel/Orderer/Admins
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 22f[0m Adding to config map: [Policy] /Channel/Orderer/Readers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 230[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 231[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 232[0m Adding to config map: [Value]  /Channel/Application/org0/MSP
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 233[0m Adding to config map: [Policy] /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 234[0m Adding to config map: [Policy] /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 235[0m Adding to config map: [Policy] /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 236[0m Adding to config map: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 237[0m Adding to config map: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 238[0m Adding to config map: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 239[0m Adding to config map: [Value]  /Channel/OrdererAddresses
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23a[0m Adding to config map: [Value]  /Channel/HashingAlgorithm
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23b[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23c[0m Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23d[0m Adding to config map: [Policy] /Channel/Admins
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23e[0m Adding to config map: [Policy] /Channel/Readers
+[36m2018-09-19 07:00:10.939 UTC [common/configtx] addToMap -> DEBU 23f[0m Adding to config map: [Policy] /Channel/Writers
+[36m2018-09-19 07:00:10.939 UTC [orderer/common/broadcast] Handle -> DEBU 240[0m [channel: mychannel] Broadcast has successfully enqueued message of type CONFIG_UPDATE from 172.23.0.3:38270
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] NewStandardValues -> DEBU 241[0m Initializing protos for *channelconfig.ChannelProtos
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 242[0m Processing field: HashingAlgorithm
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 243[0m Processing field: BlockDataHashingStructure
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 244[0m Processing field: OrdererAddresses
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 245[0m Processing field: Consortium
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 246[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] NewStandardValues -> DEBU 247[0m Initializing protos for *channelconfig.ApplicationProtos
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 248[0m Processing field: ACLs
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 249[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] NewStandardValues -> DEBU 24a[0m Initializing protos for *channelconfig.ApplicationOrgProtos
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 24b[0m Processing field: AnchorPeers
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] NewStandardValues -> DEBU 24c[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] initializeProtosStruct -> DEBU 24d[0m Processing field: MSP
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] Validate -> DEBU 24e[0m Anchor peers for org org0 are 
+[36m2018-09-19 07:00:10.940 UTC [common/channelconfig] validateMSP -> DEBU 24f[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.940 UTC [msp] newBccspMsp -> DEBU 250[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.940 UTC [msp] New -> DEBU 251[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.940 UTC [msp] Setup -> DEBU 252[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.940 UTC [msp/identity] newIdentity -> DEBU 253[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.940 UTC [msp/identity] newIdentity -> DEBU 254[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.940 UTC [msp] Validate -> DEBU 255[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] NewStandardValues -> DEBU 256[0m Initializing protos for *channelconfig.OrdererProtos
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 257[0m Processing field: ConsensusType
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 258[0m Processing field: BatchSize
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 259[0m Processing field: BatchTimeout
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 25a[0m Processing field: KafkaBrokers
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 25b[0m Processing field: ChannelRestrictions
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 25c[0m Processing field: Capabilities
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] NewStandardValues -> DEBU 25d[0m Initializing protos for *channelconfig.OrganizationProtos
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] initializeProtosStruct -> DEBU 25e[0m Processing field: MSP
+[36m2018-09-19 07:00:10.941 UTC [common/channelconfig] validateMSP -> DEBU 25f[0m Setting up MSP for org org0
+[36m2018-09-19 07:00:10.941 UTC [msp] newBccspMsp -> DEBU 260[0m Creating BCCSP-based MSP instance
+[36m2018-09-19 07:00:10.941 UTC [msp] New -> DEBU 261[0m Creating Cache-MSP instance
+[36m2018-09-19 07:00:10.941 UTC [msp] Setup -> DEBU 262[0m Setting up MSP instance org0MSP
+[36m2018-09-19 07:00:10.941 UTC [orderer/common/broadcast] Handle -> DEBU 263[0m Received EOF from 172.23.0.3:38270, hangup
+[36m2018-09-19 07:00:10.941 UTC [orderer/common/server] func1 -> DEBU 264[0m Closing Broadcast stream
+[36m2018-09-19 07:00:10.941 UTC [common/deliver] deliverBlocks -> DEBU 265[0m Rejecting deliver for 172.23.0.3:38268 because channel mychannel not found
+[36m2018-09-19 07:00:10.941 UTC [common/deliver] Handle -> DEBU 266[0m Waiting for new SeekInfo from 172.23.0.3:38268
+[36m2018-09-19 07:00:10.941 UTC [common/deliver] Handle -> DEBU 267[0m Attempting to read seek info message from 172.23.0.3:38268
+[36m2018-09-19 07:00:10.941 UTC [msp/identity] newIdentity -> DEBU 268[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICBTCCAaugAwIBAgIUA0eBUhLZ6BblGOjq3ybrfIYLwgswCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTMzMDkxNTA2NTUwMFowXzELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcwMFkwEwYHKoZIzj0CAQYI
+KoZIzj0DAQcDQgAEyFhheBbF9qiiMX/cOXHcGxJhMT7hUEkj+5L+n/6R0LcJ4YK/
+z8JdriPyKMIS0WZEPCS3fV57LJuIFNLKxrGTyKNFMEMwDgYDVR0PAQH/BAQDAgEG
+MBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFEFfqrt4DEwmWA+wzigj+R4k
+TaZVMAoGCCqGSM49BAMCA0gAMEUCIQCzFyaO8dRbWgBPOflrWYh688HEl6uOEWUo
+zx/wToQS0gIgQaZoe5P9np+EgiRtdBrqtNOHezNb7O7lThhln290itw=
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.941 UTC [msp/identity] newIdentity -> DEBU 269[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:10.941 UTC [common/deliver] Handle -> DEBU 26a[0m Received EOF from 172.23.0.3:38268, hangup
+[36m2018-09-19 07:00:10.941 UTC [orderer/common/server] func1 -> DEBU 26b[0m Closing Deliver stream
+[36m2018-09-19 07:00:10.942 UTC [msp] Validate -> DEBU 26c[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:10.942 UTC [msp] Setup -> DEBU 26d[0m Setting up the MSP manager (1 msps)
+[36m2018-09-19 07:00:10.942 UTC [msp] Setup -> DEBU 26e[0m MSP manager setup complete, setup 1 msps
+[36m2018-09-19 07:00:10.944 UTC [orderer/common/server] Deliver -> DEBU 270[0m Starting new Deliver handler
+[36m2018-09-19 07:00:10.944 UTC [common/deliver] Handle -> DEBU 271[0m Starting new deliver loop for 172.23.0.3:38272
+[36m2018-09-19 07:00:10.944 UTC [common/deliver] Handle -> DEBU 272[0m Attempting to read seek info message from 172.23.0.3:38272
+[36m2018-09-19 07:00:10.942 UTC [policies] NewManagerImpl -> DEBU 26f[0m Proposed new policy Readers for Channel/Application/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 273[0m Proposed new policy Writers for Channel/Application/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 274[0m Proposed new policy Admins for Channel/Application/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 275[0m Proposed new policy Writers for Channel/Application
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 276[0m Proposed new policy Admins for Channel/Application
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 277[0m Proposed new policy Readers for Channel/Application
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 278[0m Proposed new policy Admins for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 279[0m Proposed new policy Readers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27a[0m Proposed new policy Writers for Channel/Orderer/org0
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27b[0m Proposed new policy BlockValidation for Channel/Orderer
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27c[0m Proposed new policy Admins for Channel/Orderer
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27d[0m Proposed new policy Readers for Channel/Orderer
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27e[0m Proposed new policy Writers for Channel/Orderer
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 27f[0m Proposed new policy Admins for Channel
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 280[0m Proposed new policy Readers for Channel
+[36m2018-09-19 07:00:10.945 UTC [policies] NewManagerImpl -> DEBU 281[0m Proposed new policy Writers for Channel
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 282[0m Adding to config map: [Group]  /Channel
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 283[0m Adding to config map: [Group]  /Channel/Application
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 284[0m Adding to config map: [Group]  /Channel/Application/org0
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 285[0m Adding to config map: [Value]  /Channel/Application/org0/MSP
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 286[0m Adding to config map: [Policy] /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 287[0m Adding to config map: [Policy] /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 288[0m Adding to config map: [Policy] /Channel/Application/org0/Admins
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 289[0m Adding to config map: [Policy] /Channel/Application/Writers
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 28a[0m Adding to config map: [Policy] /Channel/Application/Admins
+[36m2018-09-19 07:00:10.945 UTC [common/configtx] addToMap -> DEBU 28b[0m Adding to config map: [Policy] /Channel/Application/Readers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 28c[0m Adding to config map: [Group]  /Channel/Orderer
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 28d[0m Adding to config map: [Group]  /Channel/Orderer/org0
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 28e[0m Adding to config map: [Value]  /Channel/Orderer/org0/MSP
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 28f[0m Adding to config map: [Policy] /Channel/Orderer/org0/Admins
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 290[0m Adding to config map: [Policy] /Channel/Orderer/org0/Readers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 291[0m Adding to config map: [Policy] /Channel/Orderer/org0/Writers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 292[0m Adding to config map: [Value]  /Channel/Orderer/ConsensusType
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 293[0m Adding to config map: [Value]  /Channel/Orderer/BatchSize
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 294[0m Adding to config map: [Value]  /Channel/Orderer/BatchTimeout
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 295[0m Adding to config map: [Value]  /Channel/Orderer/ChannelRestrictions
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 296[0m Adding to config map: [Policy] /Channel/Orderer/Admins
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 297[0m Adding to config map: [Policy] /Channel/Orderer/Readers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 298[0m Adding to config map: [Policy] /Channel/Orderer/Writers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 299[0m Adding to config map: [Policy] /Channel/Orderer/BlockValidation
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29a[0m Adding to config map: [Value]  /Channel/Consortium
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29b[0m Adding to config map: [Value]  /Channel/BlockDataHashingStructure
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29c[0m Adding to config map: [Value]  /Channel/OrdererAddresses
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29d[0m Adding to config map: [Value]  /Channel/HashingAlgorithm
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29e[0m Adding to config map: [Policy] /Channel/Writers
+[36m2018-09-19 07:00:10.946 UTC [common/configtx] addToMap -> DEBU 29f[0m Adding to config map: [Policy] /Channel/Admins
+[36m2018-09-19 07:00:10.947 UTC [common/configtx] addToMap -> DEBU 2a0[0m Adding to config map: [Policy] /Channel/Readers
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2a1[0m As expected, current configuration has policy '/Channel/Readers'
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2a2[0m As expected, current configuration has policy '/Channel/Writers'
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2a3[0m Manager Channel looking up path [Application]
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2a4[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2a5[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2a6[0m Manager Channel/Application looking up path []
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2a7[0m Manager Channel/Application has managers org0
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2a8[0m As expected, current configuration has policy '/Channel/Application/Readers'
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2a9[0m As expected, current configuration has policy '/Channel/Application/Writers'
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2aa[0m As expected, current configuration has policy '/Channel/Application/Admins'
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2ab[0m Manager Channel looking up path [Orderer]
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2ac[0m Manager Channel has managers Orderer
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2ad[0m Manager Channel has managers Application
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2ae[0m Manager Channel/Orderer looking up path []
+[36m2018-09-19 07:00:10.947 UTC [policies] Manager -> DEBU 2af[0m Manager Channel/Orderer has managers org0
+[36m2018-09-19 07:00:10.947 UTC [common/channelconfig] LogSanityChecks -> DEBU 2b0[0m As expected, current configuration has policy '/Channel/Orderer/BlockValidation'
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] newBlockfileMgr -> DEBU 2b1[0m newBlockfileMgr() initializing file-based block storage for ledger: mychannel 
+[36m2018-09-19 07:00:10.947 UTC [kvledger.util] CreateDirIfMissing -> DEBU 2b2[0m CreateDirIfMissing [/var/hyperledger/production/orderer/chains/mychannel/]
+[36m2018-09-19 07:00:10.947 UTC [kvledger.util] logDirStatus -> DEBU 2b3[0m Before creating dir - [/var/hyperledger/production/orderer/chains/mychannel/] does not exist
+[36m2018-09-19 07:00:10.947 UTC [kvledger.util] logDirStatus -> DEBU 2b4[0m After creating dir - [/var/hyperledger/production/orderer/chains/mychannel/] exists
+2018-09-19 07:00:10.947 UTC [fsblkstorage] newBlockfileMgr -> INFO 2b5[0m Getting block information from block storage
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 2b6[0m Retrieving checkpoint info from block files
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] retrieveLastFileSuffix -> DEBU 2b7[0m retrieveLastFileSuffix()
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] retrieveLastFileSuffix -> DEBU 2b8[0m retrieveLastFileSuffix() - biggestFileNum = -1
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 2b9[0m Last file number found = -1
+[36m2018-09-19 07:00:10.947 UTC [fsblkstorage] constructCheckpointInfoFromBlockFiles -> DEBU 2ba[0m No block file found
+[36m2018-09-19 07:00:10.948 UTC [fsblkstorage] newBlockfileMgr -> DEBU 2bb[0m Info constructed by scanning the blocks dir = (*fsblkstorage.checkpointInfo)(0xc420036600)(latestFileChunkSuffixNum=[0], latestFileChunksize=[0], isChainEmpty=[true], lastBlockNumber=[0])
+[36m2018-09-19 07:00:10.955 UTC [fsblkstorage] newBlockIndex -> DEBU 2bc[0m newBlockIndex() - indexItems:[[BlockNum]]
+[36m2018-09-19 07:00:10.957 UTC [fsblkstorage] indexBlock -> DEBU 2bd[0m Indexing block [blockNum=0, blockHash=[]byte{0x5, 0x8c, 0x5e, 0xc5, 0xee, 0xd4, 0xfc, 0xb, 0x9c, 0xb4, 0x9f, 0xe7, 0xc0, 0xf2, 0xcf, 0xbe, 0xea, 0x33, 0x23, 0xc2, 0x72, 0xf8, 0xfe, 0x65, 0xd3, 0x97, 0x9a, 0x2a, 0xaa, 0x7e, 0x73, 0x86} txOffsets=
+txId= locPointer=offset=38, bytesLength=8427
+]
+[36m2018-09-19 07:00:10.958 UTC [fsblkstorage] updateCheckpoint -> DEBU 2be[0m Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[8470], isChainEmpty=[false], lastBlockNumber=[0]
+[36m2018-09-19 07:00:10.959 UTC [fsblkstorage] Next -> DEBU 2bf[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 07:00:10.959 UTC [fsblkstorage] newBlockfileStream -> DEBU 2c0[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/mychannel/blockfile_000000], startOffset=[0]
+[36m2018-09-19 07:00:10.959 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2c1[0m Remaining bytes=[8470], Going to peek [8] bytes
+[36m2018-09-19 07:00:10.959 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2c2[0m Returning blockbytes - length=[8468], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 07:00:10.959 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2c3[0m blockbytes [8468] read from file [0]
+[36m2018-09-19 07:00:10.959 UTC [orderer/commmon/multichannel] newBlockWriter -> DEBU 2c4[0m [channel: mychannel] Creating block writer for tip of chain (blockNumber=0, lastConfigBlockNum=0, lastConfigSeq=1)
+[36m2018-09-19 07:00:10.959 UTC [orderer/commmon/multichannel] newChainSupport -> DEBU 2c5[0m [channel: mychannel] Done creating channel support resources
+2018-09-19 07:00:10.959 UTC [orderer/commmon/multichannel] newChain -> INFO 2c6[0m Created and starting new chain mychannel
+[36m2018-09-19 07:00:10.959 UTC [msp] GetDefaultSigningIdentity -> DEBU 2c7[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.959 UTC [msp] GetDefaultSigningIdentity -> DEBU 2c8[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.959 UTC [msp/identity] Sign -> DEBU 2c9[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...FFD00A619DB7776A4FE93E9C3725A817 
+[36m2018-09-19 07:00:10.959 UTC [msp/identity] Sign -> DEBU 2ca[0m Sign: digest: C6A035B3AEF118A1AA17061E56F37FABD3FB38B43C305AEDEB9D696B933F8877 
+[36m2018-09-19 07:00:10.959 UTC [msp] GetDefaultSigningIdentity -> DEBU 2cb[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.959 UTC [orderer/commmon/multichannel] addLastConfigSignature -> DEBU 2cc[0m [channel: testchainid] About to write block, setting its LAST_CONFIG to 0
+[36m2018-09-19 07:00:10.959 UTC [msp] GetDefaultSigningIdentity -> DEBU 2cd[0m Obtaining default signing identity
+[36m2018-09-19 07:00:10.959 UTC [msp/identity] Sign -> DEBU 2ce[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...FFD00A619DB7776A4FE93E9C3725A817 
+[36m2018-09-19 07:00:10.959 UTC [msp/identity] Sign -> DEBU 2cf[0m Sign: digest: C91FADBB67C8058751EA402BBE6D66AE1075005DA481EF473B5AB4A9CA96738E 
+[36m2018-09-19 07:00:10.961 UTC [fsblkstorage] indexBlock -> DEBU 2d0[0m Indexing block [blockNum=1, blockHash=[]byte{0x9c, 0x21, 0x23, 0xf5, 0xc6, 0xf4, 0x16, 0xf4, 0xa1, 0xa5, 0x11, 0x97, 0xb4, 0xd6, 0x3f, 0x66, 0x6d, 0x6c, 0xdc, 0xc8, 0xc0, 0xb4, 0x14, 0x6b, 0x7d, 0x16, 0x77, 0xaa, 0x65, 0xce, 0xe0, 0x69} txOffsets=
+txId= locPointer=offset=70, bytesLength=9555
+]
+[36m2018-09-19 07:00:10.962 UTC [fsblkstorage] updateCheckpoint -> DEBU 2d1[0m Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[16792], isChainEmpty=[false], lastBlockNumber=[1]
+[36m2018-09-19 07:00:10.962 UTC [orderer/commmon/multichannel] commitBlock -> DEBU 2d2[0m [channel: testchainid] Wrote block 1
+[36m2018-09-19 07:00:11.145 UTC [policies] Evaluate -> DEBU 2d3[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Readers ==
+[36m2018-09-19 07:00:11.145 UTC [policies] Evaluate -> DEBU 2d4[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:11.145 UTC [policies] Evaluate -> DEBU 2d5[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Readers ==
+[36m2018-09-19 07:00:11.145 UTC [policies] Evaluate -> DEBU 2d6[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:11.145 UTC [policies] Evaluate -> DEBU 2d7[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Readers ==
+2018-09-19 07:00:11.145 UTC [msp] DeserializeIdentity -> INFO 2d8[0m Obtaining identity
+[36m2018-09-19 07:00:11.146 UTC [msp/identity] newIdentity -> DEBU 2d9[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICvjCCAmWgAwIBAgIUMXd5rFiDL5w2Em+awPd4O/lZDMwwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYjELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEP
+MA0GA1UECxMGY2xpZW50MRMwEQYDVQQDEwphZG1pbi1vcmcwMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEAicq6qg+/7FvoJ+AQvIRvunEnXIO6lPdikWfNtNum8PQ
+7GIWQnerjFDkCT8if+2xgj2rg0dzP2DJWJ+E15338aOB+zCB+DAOBgNVHQ8BAf8E
+BAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSFCqYZ6VJW61w544dql1tSVs
+eacwHwYDVR0jBBgwFoAUQV+qu3gMTCZYD7DOKCP5HiRNplUwFwYDVR0RBBAwDoIM
+OThjNmI5MGYxN2VjMH8GCCoDBAUGBwgBBHN7ImF0dHJzIjp7ImFiYWMuaW5pdCI6
+InRydWUiLCJhZG1pbiI6InRydWUiLCJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVu
+cm9sbG1lbnRJRCI6ImFkbWluLW9yZzAiLCJoZi5UeXBlIjoiY2xpZW50In19MAoG
+CCqGSM49BAMCA0cAMEQCIDOP3o2v68VMNjTRTvyov2M9EMFGjGLldJhJ4ilhGWEQ
+AiBRN+NlgcRpLxLd5erD+e9li/7/tly8Bg1UxrlSCFKmGA==
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func1 -> DEBU 2da[0m 0xc4200b2860 gate 1537340411146187994 evaluation starts
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func2 -> DEBU 2db[0m 0xc4200b2860 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func2 -> DEBU 2dc[0m 0xc4200b2860 processing identity 0 with bytes of 0a076f7267304d535012f5072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943766a4343416d576741774942416749554d586435724669444c357732456d2b61775064344f2f6c5a444d7777436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f77596a454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a45500a4d4130474131554543784d47593278705a5735304d524d774551594456515144457770685a47317062693176636d63774d466b77457759484b6f5a497a6a30430a415159494b6f5a497a6a30444151634451674145416963713671672b2f3746766f4a2b415176495276756e456e58494f366c5064696b57664e744e756d3850510a37474957516e65726a46446b43543869662b3278676a32726730647a5032444a574a2b453135333338614f422b7a43422b44414f42674e5648513842416638450a42414d434234417744415944565230544151482f424149774144416442674e56485134454667515553464371595a36564a5736317735343464716c31745356730a65616377487759445652306a42426777466f415551562b717533674d54435a594437444f4b4350354869524e706c5577467759445652305242424177446f494d0a4f54686a4e6d49354d4759784e32566a4d48384743436f44424155474277674242484e37496d463064484a7a496a7037496d466959574d7561573570644349360a496e5279645755694c434a685a47317062694936496e5279645755694c434a6f5a6935425a6d5a7062476c6864476c766269493649694973496d686d4c6b56750a636d39736247316c626e524a52434936496d466b62576c754c5739795a7a41694c434a6f5a6935556558426c496a6f69593278705a573530496e31394d416f470a43437147534d343942414d43413063414d45514349444f50336f32763638564d4e6a54525476796f76324d39454d46476a474c6c644a684a34696c68475745510a416942524e2b4e6c676352704c784c64356572442b65396c692f372f746c79384267315578726c5343464b6d47413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:11.146 UTC [msp] satisfiesPrincipalInternalPreV13 -> DEBU 2dd[0m Checking if identity satisfies MEMBER role for org0MSP
+[36m2018-09-19 07:00:11.146 UTC [msp] Validate -> DEBU 2de[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func2 -> DEBU 2df[0m 0xc4200b2860 principal matched by identity 0
+[36m2018-09-19 07:00:11.146 UTC [msp/identity] Verify -> DEBU 2e0[0m Verify: digest = 00000000  fd df ab 33 ea 13 a1 30  11 5a 34 bf 52 de 48 45  |...3...0.Z4.R.HE|
+00000010  a4 1e 60 03 78 1f b8 e3  45 39 32 88 fd 7e ad 3a  |..`.x...E92..~.:|
+[36m2018-09-19 07:00:11.146 UTC [msp/identity] Verify -> DEBU 2e1[0m Verify: sig = 00000000  30 45 02 21 00 a7 e4 bb  03 a9 e0 a3 1a 79 59 46  |0E.!.........yYF|
+00000010  48 bb 66 e9 46 94 cb 0b  8c bc 7a 2c 30 f6 e4 d9  |H.f.F.....z,0...|
+00000020  10 29 4d a7 61 02 20 1f  e7 52 ee ca 1d 25 f3 93  |.)M.a. ..R...%..|
+00000030  5a a3 fa c4 1f 4e e7 ef  46 02 bb 02 6c ab f6 2f  |Z....N..F...l../|
+00000040  c2 c4 30 f1 ad 89 b7                              |..0....|
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func2 -> DEBU 2e2[0m 0xc4200b2860 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:11.146 UTC [cauthdsl] func1 -> DEBU 2e3[0m 0xc4200b2860 gate 1537340411146187994 evaluation succeeds
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e4[0m Signature set satisfies policy /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e5[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e6[0m Signature set satisfies policy /Channel/Application/Readers
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e7[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Readers
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e8[0m Signature set satisfies policy /Channel/Readers
+[36m2018-09-19 07:00:11.146 UTC [policies] Evaluate -> DEBU 2e9[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Readers
+[36m2018-09-19 07:00:11.146 UTC [common/deliver] deliverBlocks -> DEBU 2ea[0m [channel: mychannel] Received seekInfo (0xc4205f05c0) start:<specified:<> > stop:<specified:<> >  from 172.23.0.3:38272
+[36m2018-09-19 07:00:11.146 UTC [fsblkstorage] Next -> DEBU 2eb[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=0
+[36m2018-09-19 07:00:11.146 UTC [fsblkstorage] newBlockfileStream -> DEBU 2ec[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/mychannel/blockfile_000000], startOffset=[0]
+[36m2018-09-19 07:00:11.146 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2ed[0m Remaining bytes=[8470], Going to peek [8] bytes
+[36m2018-09-19 07:00:11.146 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2ee[0m Returning blockbytes - length=[8468], placementInfo={fileNum=[0], startOffset=[0], bytesOffset=[2]}
+[36m2018-09-19 07:00:11.146 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 2ef[0m blockbytes [8468] read from file [0]
+[36m2018-09-19 07:00:11.146 UTC [common/deliver] deliverBlocks -> DEBU 2f0[0m [channel: mychannel] Delivering block for (0xc4205f05c0) for 172.23.0.3:38272
+[36m2018-09-19 07:00:11.146 UTC [common/deliver] deliverBlocks -> DEBU 2f1[0m [channel: mychannel] Done delivering to 172.23.0.3:38272 for (0xc4205f05c0)
+[36m2018-09-19 07:00:11.146 UTC [common/deliver] Handle -> DEBU 2f2[0m Waiting for new SeekInfo from 172.23.0.3:38272
+[36m2018-09-19 07:00:11.146 UTC [common/deliver] Handle -> DEBU 2f3[0m Attempting to read seek info message from 172.23.0.3:38272
+[36m2018-09-19 07:00:11.147 UTC [common/deliver] Handle -> DEBU 2f4[0m Received EOF from 172.23.0.3:38272, hangup
+[36m2018-09-19 07:00:11.148 UTC [orderer/common/server] func1 -> DEBU 2f5[0m Closing Deliver stream
+[36m2018-09-19 07:00:25.429 UTC [orderer/common/server] Deliver -> DEBU 2f6[0m Starting new Deliver handler
+[36m2018-09-19 07:00:25.429 UTC [common/deliver] Handle -> DEBU 2f7[0m Starting new deliver loop for 172.23.0.3:38276
+[36m2018-09-19 07:00:25.429 UTC [common/deliver] Handle -> DEBU 2f8[0m Attempting to read seek info message from 172.23.0.3:38276
+[36m2018-09-19 07:00:25.429 UTC [policies] Evaluate -> DEBU 2f9[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Readers ==
+[36m2018-09-19 07:00:25.430 UTC [policies] Evaluate -> DEBU 2fa[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:25.430 UTC [policies] Evaluate -> DEBU 2fb[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Readers ==
+[36m2018-09-19 07:00:25.430 UTC [policies] Evaluate -> DEBU 2fc[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:25.430 UTC [policies] Evaluate -> DEBU 2fd[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Readers ==
+2018-09-19 07:00:25.430 UTC [msp] DeserializeIdentity -> INFO 2fe[0m Obtaining identity
+[36m2018-09-19 07:00:25.430 UTC [msp/identity] newIdentity -> DEBU 2ff[0m Creating identity instance for cert -----BEGIN CERTIFICATE-----
+MIICmTCCAj+gAwIBAgIUcWrNgDZ0eHkMxtVvEXqPiYRGVzUwCgYIKoZIzj0EAwIw
+XzELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK
+EwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRAwDgYDVQQDEwdjYS1vcmcw
+MB4XDTE4MDkxOTA2NTUwMFoXDTE5MDkxOTA3MDAwMFowYDELMAkGA1UEBhMCVVMx
+FzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBlcmxlZGdlcjEN
+MAsGA1UECxMEcGVlcjETMBEGA1UEAxMKcGVlcjEtb3JnMDBZMBMGByqGSM49AgEG
+CCqGSM49AwEHA0IABAFJUCSNKwXgAEVqRl/F3/Xi2bY8W8Na06KrVg6S9e6C+9lc
+qREMOa1YoKSZVp9aHYSONyKcbTQsw2bxrBw5vCOjgdcwgdQwDgYDVR0PAQH/BAQD
+AgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFK+d8CtIO9oARE0k27Q95diVrUlg
+MB8GA1UdIwQYMBaAFEFfqrt4DEwmWA+wzigj+R4kTaZVMBcGA1UdEQQQMA6CDDk4
+YzZiOTBmMTdlYzBbBggqAwQFBgcIAQRPeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlv
+biI6IiIsImhmLkVucm9sbG1lbnRJRCI6InBlZXIxLW9yZzAiLCJoZi5UeXBlIjoi
+cGVlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEAwCvz/7KBG9grSl4u95KZXtgiKSAB
+GudmPUcbdPrfXWECICweNUhi85xD1HufA9W6yKNqDcsYY29hU4PTywkp8Wcf
+-----END CERTIFICATE-----
+[36m2018-09-19 07:00:25.431 UTC [cauthdsl] func1 -> DEBU 300[0m 0xc4200b2918 gate 1537340425431497015 evaluation starts
+[36m2018-09-19 07:00:25.431 UTC [cauthdsl] func2 -> DEBU 301[0m 0xc4200b2918 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:25.431 UTC [cauthdsl] func2 -> DEBU 302[0m 0xc4200b2918 processing identity 0 with bytes of 0a076f7267304d535012c0072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949436d544343416a2b6741774942416749556357724e67445a3065486b4d787456764558715069595247567a5577436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f775944454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a454e0a4d4173474131554543784d456347566c636a45544d4245474131554541784d4b6347566c636a457462334a6e4d44425a4d424d4742797147534d3439416745470a43437147534d343941774548413049414241464a5543534e4b77586741455671526c2f46332f58693262593857384e6130364b7256673653396536432b396c630a7152454d4f6131596f4b535a567039614859534f4e794b6362545173773262787242773576434f6a676463776764517744675944565230504151482f424151440a416765414d41774741315564457745422f7751434d414177485159445652304f42425945464b2b64384374494f396f415245306b323751393564695672556c670a4d42384741315564497751594d42614146454666717274344445776d57412b777a69676a2b52346b54615a564d42634741315564455151514d41364344446b340a597a5a694f54426d4d54646c597a42624267677141775146426763494151525065794a68644852796379493665794a6f5a6935425a6d5a7062476c6864476c760a6269493649694973496d686d4c6b5675636d39736247316c626e524a52434936496e426c5a5849784c5739795a7a41694c434a6f5a6935556558426c496a6f690a6347566c63694a396654414b42676771686b6a4f5051514441674e4941444246416945417743767a2f374b4247396772536c347539354b5a587467694b5341420a4775646d505563626450726658574543494377654e556869383578443148756641395736794b4e7144637359593239685534505479776b70385763660a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:25.432 UTC [msp] satisfiesPrincipalInternalPreV13 -> DEBU 303[0m Checking if identity satisfies MEMBER role for org0MSP
+[36m2018-09-19 07:00:25.432 UTC [msp] Validate -> DEBU 304[0m MSP org0MSP validating identity
+[36m2018-09-19 07:00:25.432 UTC [cauthdsl] func2 -> DEBU 305[0m 0xc4200b2918 principal matched by identity 0
+[36m2018-09-19 07:00:25.433 UTC [msp/identity] Verify -> DEBU 306[0m Verify: digest = 00000000  8b e5 78 9a 40 64 1d 0b  ba a8 6c 8b f2 9f 95 48  |..x.@d....l....H|
+00000010  4b 5a 96 c7 5e ed a9 73  4f 43 b5 dc 33 00 0e 16  |KZ..^..sOC..3...|
+[36m2018-09-19 07:00:25.433 UTC [msp/identity] Verify -> DEBU 307[0m Verify: sig = 00000000  30 44 02 20 03 7e 62 47  6c 9b 2a 22 9a d8 bf c8  |0D. .~bGl.*"....|
+00000010  10 a0 86 2c 66 af b6 9c  5d ec 45 37 32 31 c4 47  |...,f...].E721.G|
+00000020  59 57 3e e5 02 20 2e 3b  5d ea 8b 29 78 fb 68 e5  |YW>.. .;]..)x.h.|
+00000030  42 ae b0 64 64 ab 72 4b  1c f1 53 e8 ea fc 4f a8  |B..dd.rK..S...O.|
+00000040  01 6f e9 b1 65 c2                                 |.o..e.|
+[36m2018-09-19 07:00:25.433 UTC [cauthdsl] func2 -> DEBU 308[0m 0xc4200b2918 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:25.433 UTC [cauthdsl] func1 -> DEBU 309[0m 0xc4200b2918 gate 1537340425431497015 evaluation succeeds
+[36m2018-09-19 07:00:25.433 UTC [policies] Evaluate -> DEBU 30a[0m Signature set satisfies policy /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:25.434 UTC [policies] Evaluate -> DEBU 30b[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Readers
+[36m2018-09-19 07:00:25.434 UTC [policies] Evaluate -> DEBU 30c[0m Signature set satisfies policy /Channel/Application/Readers
+[36m2018-09-19 07:00:25.434 UTC [policies] Evaluate -> DEBU 30d[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Readers
+[36m2018-09-19 07:00:25.434 UTC [policies] Evaluate -> DEBU 30e[0m Signature set satisfies policy /Channel/Readers
+[36m2018-09-19 07:00:25.434 UTC [policies] Evaluate -> DEBU 30f[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Readers
+[36m2018-09-19 07:00:25.434 UTC [common/deliver] deliverBlocks -> DEBU 310[0m [channel: mychannel] Received seekInfo (0xc420a493c0) start:<specified:<number:1 > > stop:<specified:<number:18446744073709551615 > >  from 172.23.0.3:38276
+[36m2018-09-19 07:00:25.434 UTC [fsblkstorage] waitForBlock -> DEBU 311[0m Going to wait for newer blocks. maxAvailaBlockNumber=[0], waitForBlockNum=[1]
+[36m2018-09-19 07:00:32.869 UTC [orderer/common/server] Broadcast -> DEBU 312[0m Starting new Broadcast handler
+[36m2018-09-19 07:00:32.869 UTC [orderer/common/broadcast] Handle -> DEBU 313[0m Starting new broadcast loop for 172.23.0.5:33004
+[36m2018-09-19 07:00:33.320 UTC [orderer/common/broadcast] Handle -> DEBU 314[0m [channel: mychannel] Broadcast is processing normal message from 172.23.0.5:33004 with txid '269749bb03da5f095aa7ddd8beac359f3a747ca54e5208dbf05de63a9ec526c2' of type ENDORSER_TRANSACTION
+[36m2018-09-19 07:00:33.320 UTC [policies] Evaluate -> DEBU 315[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers ==
+[36m2018-09-19 07:00:33.320 UTC [policies] Evaluate -> DEBU 316[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:33.320 UTC [policies] Evaluate -> DEBU 317[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Writers ==
+[36m2018-09-19 07:00:33.321 UTC [policies] Evaluate -> DEBU 318[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:00:33.321 UTC [policies] Evaluate -> DEBU 319[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Writers ==
+[36m2018-09-19 07:00:33.321 UTC [cauthdsl] func1 -> DEBU 31a[0m 0xc4200b2978 gate 1537340433321332538 evaluation starts
+[36m2018-09-19 07:00:33.321 UTC [cauthdsl] func2 -> DEBU 31b[0m 0xc4200b2978 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:00:33.321 UTC [cauthdsl] func2 -> DEBU 31c[0m 0xc4200b2978 processing identity 0 with bytes of 0a076f7267304d535012f5072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943766a4343416d576741774942416749554d586435724669444c357732456d2b61775064344f2f6c5a444d7777436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f77596a454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a45500a4d4130474131554543784d47593278705a5735304d524d774551594456515144457770685a47317062693176636d63774d466b77457759484b6f5a497a6a30430a415159494b6f5a497a6a30444151634451674145416963713671672b2f3746766f4a2b415176495276756e456e58494f366c5064696b57664e744e756d3850510a37474957516e65726a46446b43543869662b3278676a32726730647a5032444a574a2b453135333338614f422b7a43422b44414f42674e5648513842416638450a42414d434234417744415944565230544151482f424149774144416442674e56485134454667515553464371595a36564a5736317735343464716c31745356730a65616377487759445652306a42426777466f415551562b717533674d54435a594437444f4b4350354869524e706c5577467759445652305242424177446f494d0a4f54686a4e6d49354d4759784e32566a4d48384743436f44424155474277674242484e37496d463064484a7a496a7037496d466959574d7561573570644349360a496e5279645755694c434a685a47317062694936496e5279645755694c434a6f5a6935425a6d5a7062476c6864476c766269493649694973496d686d4c6b56750a636d39736247316c626e524a52434936496d466b62576c754c5739795a7a41694c434a6f5a6935556558426c496a6f69593278705a573530496e31394d416f470a43437147534d343942414d43413063414d45514349444f50336f32763638564d4e6a54525476796f76324d39454d46476a474c6c644a684a34696c68475745510a416942524e2b4e6c676352704c784c64356572442b65396c692f372f746c79384267315578726c5343464b6d47413d3d0a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:00:33.321 UTC [cauthdsl] func2 -> DEBU 31d[0m 0xc4200b2978 principal matched by identity 0
+[36m2018-09-19 07:00:33.321 UTC [msp/identity] Verify -> DEBU 31e[0m Verify: digest = 00000000  60 1d 59 60 2f 97 14 4d  61 9e dd 39 69 1e 8a 8f  |`.Y`/..Ma..9i...|
+00000010  32 de 39 23 ac 86 9e 50  f3 b0 29 a5 eb 80 50 a5  |2.9#...P..)...P.|
+[36m2018-09-19 07:00:33.321 UTC [msp/identity] Verify -> DEBU 31f[0m Verify: sig = 00000000  30 45 02 21 00 fd 75 3d  f2 ce 85 f6 19 fb 8d 68  |0E.!..u=.......h|
+00000010  83 47 f8 a7 73 47 44 82  89 9e b4 bf df 29 99 96  |.G..sGD......)..|
+00000020  b3 52 c6 f2 ba 02 20 42  e7 b9 07 75 b8 59 24 05  |.R.... B...u.Y$.|
+00000030  62 e6 c7 25 b4 78 6f 2c  5c e2 47 64 78 61 ab 1b  |b..%.xo,\.Gdxa..|
+00000040  b2 5e 74 fa 1b 2e 0a                              |.^t....|
+[36m2018-09-19 07:00:33.322 UTC [cauthdsl] func2 -> DEBU 320[0m 0xc4200b2978 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:00:33.322 UTC [cauthdsl] func1 -> DEBU 321[0m 0xc4200b2978 gate 1537340433321332538 evaluation succeeds
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 322[0m Signature set satisfies policy /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 323[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Writers
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 324[0m Signature set satisfies policy /Channel/Application/Writers
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 325[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Writers
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 326[0m Signature set satisfies policy /Channel/Writers
+[36m2018-09-19 07:00:33.322 UTC [policies] Evaluate -> DEBU 327[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers
+[36m2018-09-19 07:00:33.322 UTC [orderer/common/broadcast] Handle -> DEBU 328[0m [channel: mychannel] Broadcast has successfully enqueued message of type ENDORSER_TRANSACTION from 172.23.0.5:33004
+[36m2018-09-19 07:00:33.322 UTC [orderer/common/blockcutter] Ordered -> DEBU 329[0m Enqueuing message into batch
+[33m2018-09-19 07:00:33.324 UTC [orderer/common/broadcast] Handle -> WARN 32a[0m Error reading from 172.23.0.5:33004: rpc error: code = Canceled desc = context canceled
+[36m2018-09-19 07:00:33.324 UTC [orderer/common/server] func1 -> DEBU 32b[0m Closing Broadcast stream
+[36m2018-09-19 07:00:35.323 UTC [orderer/consensus/solo] main -> DEBU 32c[0m Batch timer expired, creating block
+[36m2018-09-19 07:00:35.323 UTC [msp] GetDefaultSigningIdentity -> DEBU 32d[0m Obtaining default signing identity
+[36m2018-09-19 07:00:35.323 UTC [msp] GetDefaultSigningIdentity -> DEBU 32e[0m Obtaining default signing identity
+[36m2018-09-19 07:00:35.323 UTC [msp/identity] Sign -> DEBU 32f[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...60960770A59BBEFC1F6C97449EDA2A36 
+[36m2018-09-19 07:00:35.323 UTC [msp/identity] Sign -> DEBU 330[0m Sign: digest: 9D0E3E91F7D0371A833BCC4064F2ADF6A5379E4CF7A2FACD29BF5E8B0BADD8DE 
+[36m2018-09-19 07:00:35.323 UTC [msp] GetDefaultSigningIdentity -> DEBU 331[0m Obtaining default signing identity
+[36m2018-09-19 07:00:35.323 UTC [orderer/commmon/multichannel] addLastConfigSignature -> DEBU 332[0m [channel: mychannel] About to write block, setting its LAST_CONFIG to 0
+[36m2018-09-19 07:00:35.323 UTC [msp] GetDefaultSigningIdentity -> DEBU 333[0m Obtaining default signing identity
+[36m2018-09-19 07:00:35.323 UTC [msp/identity] Sign -> DEBU 334[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...60960770A59BBEFC1F6C97449EDA2A36 
+[36m2018-09-19 07:00:35.323 UTC [msp/identity] Sign -> DEBU 335[0m Sign: digest: 729F767B3931966DDB38579878B0664848E1F138E957EAE69D3D541A9F05C374 
+[36m2018-09-19 07:00:35.326 UTC [fsblkstorage] indexBlock -> DEBU 336[0m Indexing block [blockNum=1, blockHash=[]byte{0x22, 0x8a, 0x79, 0x29, 0x22, 0xad, 0x3c, 0xc, 0x4f, 0xa0, 0xc3, 0xf, 0x49, 0xdf, 0x67, 0x32, 0x89, 0x83, 0xb4, 0x38, 0x69, 0x27, 0xc5, 0xe7, 0xa8, 0x8f, 0xdf, 0xa8, 0xfe, 0x75, 0xfd, 0xd4} txOffsets=
+txId=269749bb03da5f095aa7ddd8beac359f3a747ca54e5208dbf05de63a9ec526c2 locPointer=offset=70, bytesLength=3967
+]
+[36m2018-09-19 07:00:35.327 UTC [fsblkstorage] updateCheckpoint -> DEBU 337[0m Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[14708], isChainEmpty=[false], lastBlockNumber=[1]
+[36m2018-09-19 07:00:35.327 UTC [orderer/commmon/multichannel] commitBlock -> DEBU 338[0m [channel: mychannel] Wrote block 1
+[36m2018-09-19 07:00:35.327 UTC [fsblkstorage] waitForBlock -> DEBU 339[0m Came out of wait. maxAvailaBlockNumber=[1]
+[36m2018-09-19 07:00:35.327 UTC [fsblkstorage] Next -> DEBU 33a[0m Initializing block stream for iterator. itr.maxBlockNumAvailable=1
+[36m2018-09-19 07:00:35.327 UTC [fsblkstorage] newBlockfileStream -> DEBU 33b[0m newBlockfileStream(): filePath=[/var/hyperledger/production/orderer/chains/mychannel/blockfile_000000], startOffset=[8470]
+[36m2018-09-19 07:00:35.327 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 33c[0m Remaining bytes=[6238], Going to peek [8] bytes
+[36m2018-09-19 07:00:35.328 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 33d[0m Returning blockbytes - length=[6236], placementInfo={fileNum=[0], startOffset=[8470], bytesOffset=[8472]}
+[36m2018-09-19 07:00:35.328 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 33e[0m blockbytes [6236] read from file [0]
+[36m2018-09-19 07:00:35.328 UTC [common/deliver] deliverBlocks -> DEBU 33f[0m [channel: mychannel] Delivering block for (0xc420a493c0) for 172.23.0.3:38276
+[36m2018-09-19 07:00:35.328 UTC [fsblkstorage] waitForBlock -> DEBU 340[0m Going to wait for newer blocks. maxAvailaBlockNumber=[1], waitForBlockNum=[2]
+[36m2018-09-19 07:07:21.139 UTC [orderer/common/server] Broadcast -> DEBU 341[0m Starting new Broadcast handler
+[36m2018-09-19 07:07:21.139 UTC [orderer/common/broadcast] Handle -> DEBU 342[0m Starting new broadcast loop for 172.23.0.3:38298
+[36m2018-09-19 07:07:21.153 UTC [orderer/common/broadcast] Handle -> DEBU 343[0m [channel: mychannel] Broadcast is processing normal message from 172.23.0.3:38298 with txid 'f4038e1109f97d7737d4ae1f549da177e61415168d0c035c387bcb9f6779b787' of type ENDORSER_TRANSACTION
+[36m2018-09-19 07:07:21.153 UTC [policies] Evaluate -> DEBU 344[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers ==
+[36m2018-09-19 07:07:21.153 UTC [policies] Evaluate -> DEBU 345[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:07:21.153 UTC [policies] Evaluate -> DEBU 346[0m == Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Writers ==
+[36m2018-09-19 07:07:21.153 UTC [policies] Evaluate -> DEBU 347[0m This is an implicit meta policy, it will trigger other policy evaluations, whose failures may be benign
+[36m2018-09-19 07:07:21.153 UTC [policies] Evaluate -> DEBU 348[0m == Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Writers ==
+[36m2018-09-19 07:07:21.153 UTC [cauthdsl] func1 -> DEBU 349[0m 0xc42000e018 gate 1537340841153646010 evaluation starts
+[36m2018-09-19 07:07:21.153 UTC [cauthdsl] func2 -> DEBU 34a[0m 0xc42000e018 signed by 0 principal evaluation starts (used [false])
+[36m2018-09-19 07:07:21.153 UTC [cauthdsl] func2 -> DEBU 34b[0m 0xc42000e018 processing identity 0 with bytes of 0a076f7267304d535012c0072d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949436d544343416a2b6741774942416749556357724e67445a3065486b4d787456764558715069595247567a5577436759494b6f5a497a6a3045417749770a587a454c4d416b474131554542684d4356564d78467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b0a457774496558426c636d786c5a47646c636a45504d4130474131554543784d47526d4669636d6c6a4d52417744675944565151444577646a59533176636d63770a4d423458445445344d446b784f5441324e5455774d466f58445445354d446b784f5441334d4441774d466f775944454c4d416b474131554542684d4356564d780a467a415642674e5642416754446b3576636e526f49454e68636d3973615735684d525177456759445651514b457774496558426c636d786c5a47646c636a454e0a4d4173474131554543784d456347566c636a45544d4245474131554541784d4b6347566c636a457462334a6e4d44425a4d424d4742797147534d3439416745470a43437147534d343941774548413049414241464a5543534e4b77586741455671526c2f46332f58693262593857384e6130364b7256673653396536432b396c630a7152454d4f6131596f4b535a567039614859534f4e794b6362545173773262787242773576434f6a676463776764517744675944565230504151482f424151440a416765414d41774741315564457745422f7751434d414177485159445652304f42425945464b2b64384374494f396f415245306b323751393564695672556c670a4d42384741315564497751594d42614146454666717274344445776d57412b777a69676a2b52346b54615a564d42634741315564455151514d41364344446b340a597a5a694f54426d4d54646c597a42624267677141775146426763494151525065794a68644852796379493665794a6f5a6935425a6d5a7062476c6864476c760a6269493649694973496d686d4c6b5675636d39736247316c626e524a52434936496e426c5a5849784c5739795a7a41694c434a6f5a6935556558426c496a6f690a6347566c63694a396654414b42676771686b6a4f5051514441674e4941444246416945417743767a2f374b4247396772536c347539354b5a587467694b5341420a4775646d505563626450726658574543494377654e556869383578443148756641395736794b4e7144637359593239685534505479776b70385763660a2d2d2d2d2d454e442043455254494649434154452d2d2d2d2d0a
+[36m2018-09-19 07:07:21.153 UTC [cauthdsl] func2 -> DEBU 34c[0m 0xc42000e018 principal matched by identity 0
+[36m2018-09-19 07:07:21.154 UTC [msp/identity] Verify -> DEBU 34d[0m Verify: digest = 00000000  be b7 18 99 75 a9 d1 07  43 57 42 9a 51 d8 91 c6  |....u...CWB.Q...|
+00000010  05 b7 8e 86 32 bd 02 c2  ef 34 ea 7f 19 c0 1b 02  |....2....4......|
+[36m2018-09-19 07:07:21.154 UTC [msp/identity] Verify -> DEBU 34e[0m Verify: sig = 00000000  30 44 02 20 3f d5 41 88  1e a0 c5 3d 61 34 02 95  |0D. ?.A....=a4..|
+00000010  b4 11 91 3b 03 5e c0 4c  bd 2b 9b 01 69 38 0d 27  |...;.^.L.+..i8.'|
+00000020  b6 c8 f7 ed 02 20 31 0d  41 06 b4 23 cc b7 fd 57  |..... 1.A..#...W|
+00000030  3d 2e 1d 92 a5 ff b3 50  60 c7 0f ad ca d5 aa 7d  |=......P`......}|
+00000040  03 47 97 55 7f 87                                 |.G.U..|
+[36m2018-09-19 07:07:21.154 UTC [cauthdsl] func2 -> DEBU 34f[0m 0xc42000e018 principal evaluation succeeds for identity 0
+[36m2018-09-19 07:07:21.154 UTC [cauthdsl] func1 -> DEBU 350[0m 0xc42000e018 gate 1537340841153646010 evaluation succeeds
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 351[0m Signature set satisfies policy /Channel/Application/org0/Writers
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 352[0m == Done Evaluating *cauthdsl.policy Policy /Channel/Application/org0/Writers
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 353[0m Signature set satisfies policy /Channel/Application/Writers
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 354[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Application/Writers
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 355[0m Signature set satisfies policy /Channel/Writers
+[36m2018-09-19 07:07:21.154 UTC [policies] Evaluate -> DEBU 356[0m == Done Evaluating *policies.implicitMetaPolicy Policy /Channel/Writers
+[36m2018-09-19 07:07:21.154 UTC [orderer/common/broadcast] Handle -> DEBU 357[0m [channel: mychannel] Broadcast has successfully enqueued message of type ENDORSER_TRANSACTION from 172.23.0.3:38298
+[36m2018-09-19 07:07:21.154 UTC [orderer/common/blockcutter] Ordered -> DEBU 358[0m Enqueuing message into batch
+[36m2018-09-19 07:07:21.158 UTC [grpc] Printf -> DEBU 359[0m transport: http2Server.HandleStreams failed to read frame: read tcp 172.23.0.4:7050->172.23.0.3:38298: read: connection reset by peer
+[33m2018-09-19 07:07:21.158 UTC [orderer/common/broadcast] Handle -> WARN 35a[0m Error reading from 172.23.0.3:38298: rpc error: code = Canceled desc = context canceled
+[36m2018-09-19 07:07:21.158 UTC [orderer/common/server] func1 -> DEBU 35b[0m Closing Broadcast stream
+[36m2018-09-19 07:07:23.155 UTC [orderer/consensus/solo] main -> DEBU 35c[0m Batch timer expired, creating block
+[36m2018-09-19 07:07:23.155 UTC [msp] GetDefaultSigningIdentity -> DEBU 35d[0m Obtaining default signing identity
+[36m2018-09-19 07:07:23.155 UTC [msp] GetDefaultSigningIdentity -> DEBU 35e[0m Obtaining default signing identity
+[36m2018-09-19 07:07:23.155 UTC [msp/identity] Sign -> DEBU 35f[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...956EA11F07E30D3C247A495740C5ADB8 
+[36m2018-09-19 07:07:23.155 UTC [msp/identity] Sign -> DEBU 360[0m Sign: digest: 12E07768EBC8CE78FE67B02B16850E7824873AF5F4ACD656BE81FC3545F8DB7B 
+[36m2018-09-19 07:07:23.156 UTC [msp] GetDefaultSigningIdentity -> DEBU 361[0m Obtaining default signing identity
+[36m2018-09-19 07:07:23.156 UTC [orderer/commmon/multichannel] addLastConfigSignature -> DEBU 362[0m [channel: mychannel] About to write block, setting its LAST_CONFIG to 0
+[36m2018-09-19 07:07:23.156 UTC [msp] GetDefaultSigningIdentity -> DEBU 363[0m Obtaining default signing identity
+[36m2018-09-19 07:07:23.156 UTC [msp/identity] Sign -> DEBU 364[0m Sign: plaintext: 0ADD070A076F7267304D535012D1072D...956EA11F07E30D3C247A495740C5ADB8 
+[36m2018-09-19 07:07:23.156 UTC [msp/identity] Sign -> DEBU 365[0m Sign: digest: 2E22A6E8586BD30F7EAB31D5EDD6843911C2F64CE742FF3524B2948CB4D08827 
+[36m2018-09-19 07:07:23.163 UTC [fsblkstorage] indexBlock -> DEBU 366[0m Indexing block [blockNum=2, blockHash=[]byte{0x17, 0x4e, 0xae, 0xdf, 0xee, 0xed, 0x2, 0xae, 0x1a, 0xfe, 0x18, 0x7a, 0x34, 0xa9, 0xe6, 0xf4, 0x6a, 0x99, 0x9b, 0xa3, 0xb, 0x9f, 0x92, 0x73, 0x9, 0xbc, 0x6c, 0x2c, 0x25, 0xb4, 0x81, 0x39} txOffsets=
+txId=f4038e1109f97d7737d4ae1f549da177e61415168d0c035c387bcb9f6779b787 locPointer=offset=70, bytesLength=3418
+]
+[36m2018-09-19 07:07:23.164 UTC [fsblkstorage] updateCheckpoint -> DEBU 367[0m Broadcasting about update checkpointInfo: latestFileChunkSuffixNum=[0], latestFileChunksize=[20396], isChainEmpty=[false], lastBlockNumber=[2]
+[36m2018-09-19 07:07:23.164 UTC [orderer/commmon/multichannel] commitBlock -> DEBU 368[0m [channel: mychannel] Wrote block 2
+[36m2018-09-19 07:07:23.164 UTC [fsblkstorage] waitForBlock -> DEBU 369[0m Came out of wait. maxAvailaBlockNumber=[2]
+[36m2018-09-19 07:07:23.164 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 36a[0m Remaining bytes=[5688], Going to peek [8] bytes
+[36m2018-09-19 07:07:23.165 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 36b[0m Returning blockbytes - length=[5686], placementInfo={fileNum=[0], startOffset=[14708], bytesOffset=[14710]}
+[36m2018-09-19 07:07:23.165 UTC [fsblkstorage] nextBlockBytesAndPlacementInfo -> DEBU 36c[0m blockbytes [5686] read from file [0]
+[36m2018-09-19 07:07:23.165 UTC [common/deliver] deliverBlocks -> DEBU 36d[0m [channel: mychannel] Delivering block for (0xc420a493c0) for 172.23.0.3:38276
+[36m2018-09-19 07:07:23.165 UTC [fsblkstorage] waitForBlock -> DEBU 36e[0m Going to wait for newer blocks. maxAvailaBlockNumber=[2], waitForBlockNum=[3]
